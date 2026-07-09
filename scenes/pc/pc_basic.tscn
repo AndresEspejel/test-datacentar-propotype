@@ -35,4 +35,3 @@ visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." index="4" unique_id=1281643681]
 position = Vector2(24, 0)
-zoom = Vector2(3.16, 3.16)
