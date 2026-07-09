@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cr7dw0pmuquqc"]
+
+[ext_resource type="Script" uid="uid://bb4wweudmfmmc" path="res://scenes/pc/pc.gd" id="1_vayil"]
+[ext_resource type="PackedScene" uid="uid://cttri2a2uglv5" path="res://scenes/ui/info/information_control.tscn" id="2_4brrl"]
+
+[node name="Pc" type="RigidBody2D" unique_id=2118404311]
+input_pickable = true
+freeze = true
+script = ExtResource("1_vayil")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=773455102]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=345068914]
+
+[node name="IO" type="Button" parent="." unique_id=733915151]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="InformationControl" parent="." unique_id=46941271 instance=ExtResource("2_4brrl")]
+z_index = -1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="signal_status_info" from="." to="InformationControl" method="_on_pc_signal_status_info"]
+[connection signal="pressed" from="IO" to="." method="_on_button_pressed"]

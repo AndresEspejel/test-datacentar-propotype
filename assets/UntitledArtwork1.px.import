@@ -1,0 +1,16 @@
+[remap]
+
+importer="fwdab.px.import.texture2d"
+type="Texture2D"
+uid="uid://chvpy7ubvh85x"
+path="res://.godot/imported/UntitledArtwork1.px-f264c5493e5b3b7651e3fc6ad11b53c8.res"
+
+[deps]
+
+source_file="res://assets/UntitledArtwork1.px"
+dest_files=["res://.godot/imported/UntitledArtwork1.px-f264c5493e5b3b7651e3fc6ad11b53c8.res"]
+
+[params]
+
+frame_index=0
+composite_visible_layers=true

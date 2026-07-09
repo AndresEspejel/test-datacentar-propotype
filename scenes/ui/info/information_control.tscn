@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://cttri2a2uglv5"]
+
+[ext_resource type="Script" uid="uid://be1hb8kcce6mx" path="res://scenes/ui/info/information_control.gd" id="1_srnqk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j6o76"]
+font_size = 6
+
+[node name="InformationControl" type="Control" unique_id=46941271]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.0
+offset_top = -22.0
+offset_right = 17.0
+offset_bottom = -22.0
+script = ExtResource("1_srnqk")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1130397117]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=38783706]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer" unique_id=200569476]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = -3
+columns = 2
+
+[node name="LblName" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=998154513]
+layout_mode = 2
+text = "Name:"
+label_settings = SubResource("LabelSettings_j6o76")
+
+[node name="txtName" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=5687055]
+layout_mode = 2
+text = "SVR-000"
+label_settings = SubResource("LabelSettings_j6o76")
+horizontal_alignment = 1
+
+[node name="LblSatus" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1670530572]
+layout_mode = 2
+text = "Power:"
+label_settings = SubResource("LabelSettings_j6o76")
+
+[node name="txtStatus" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=617668730]
+layout_mode = 2
+text = "OFF"
+label_settings = SubResource("LabelSettings_j6o76")
+horizontal_alignment = 1
+
+[node name="LblSatus2" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1488232090]
+layout_mode = 2
+text = "Network:"
+label_settings = SubResource("LabelSettings_j6o76")
+
+[node name="PcName3" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1978788876]
+layout_mode = 2
+text = "Offline"
+label_settings = SubResource("LabelSettings_j6o76")
+horizontal_alignment = 1
+
+[node name="LblSatus3" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=902110324]
+layout_mode = 2
+text = "Energy :"
+label_settings = SubResource("LabelSettings_j6o76")
+
+[node name="PcName4" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=571805751]
+layout_mode = 2
+text = "0 KWh"
+label_settings = SubResource("LabelSettings_j6o76")
+horizontal_alignment = 1
+
+[node name="LblSatus4" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=595595309]
+layout_mode = 2
+text = "Temp:"
+label_settings = SubResource("LabelSettings_j6o76")
+
+[node name="PcName5" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1233695405]
+layout_mode = 2
+text = "0°C"
+label_settings = SubResource("LabelSettings_j6o76")
+horizontal_alignment = 1
+
+[node name="LblSatus5" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=468603072]
+layout_mode = 2
+text = "CPU:"
+label_settings = SubResource("LabelSettings_j6o76")
+
+[node name="PcName6" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1719801680]
+layout_mode = 2
+text = "0 %"
+label_settings = SubResource("LabelSettings_j6o76")
+horizontal_alignment = 1

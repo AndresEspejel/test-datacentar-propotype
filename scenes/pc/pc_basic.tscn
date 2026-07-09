@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ch5lrqta4plvo"]
+
+[ext_resource type="PackedScene" uid="uid://cr7dw0pmuquqc" path="res://scenes/pc/pc.tscn" id="1_6syv6"]
+[ext_resource type="Script" uid="uid://da7nqkmw4f23f" path="res://scenes/pc/pc_basic.gd" id="2_stk6l"]
+[ext_resource type="Texture2D" uid="uid://ctkv0ecy50ffp" path="res://assets/Electronica.px" id="3_onbkh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stk6l"]
+atlas = ExtResource("3_onbkh")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="Theme" id="Theme_vayil"]
+default_font_size = 2
+Button/font_sizes/font_size = 7
+
+[node name="PcBasic" unique_id=2118404311 instance=ExtResource("1_6syv6")]
+script = ExtResource("2_stk6l")
+
+[node name="Sprite2D" parent="." index="0" unique_id=773455102]
+texture = SubResource("AtlasTexture_stk6l")
+
+[node name="CollisionPolygon2D" parent="." index="1" unique_id=345068914]
+polygon = PackedVector2Array(-9, -4, 7, -12, 16, -9, 16, 9, 0, 16, -9, 12)
+
+[node name="IO" parent="." index="2" unique_id=733915151]
+offset_left = -3.0
+offset_top = 16.0
+offset_right = 13.0
+offset_bottom = 35.0
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_vayil")
+text = "IO"
+
+[node name="InformationControl" parent="." index="3" unique_id=46941271]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="." index="4" unique_id=1281643681]
+position = Vector2(24, 0)
+zoom = Vector2(3.16, 3.16)

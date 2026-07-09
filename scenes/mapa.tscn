@@ -1,0 +1,59 @@
+[gd_scene format=4 uid="uid://dvfyys2lvuq30"]
+
+[ext_resource type="Texture2D" uid="uid://ctkv0ecy50ffp" path="res://assets/Electronica.px" id="1_ekubr"]
+[ext_resource type="Script" uid="uid://bnksyqyu6ycjk" path="res://scenes/mapa.gd" id="1_u1vf7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u1vf7"]
+texture = ExtResource("1_ekubr")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 8)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 8)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 8)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, 8)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, -8)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, -8)
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, -8)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, 8)
+4:1/0 = 0
+4:1/0/texture_origin = Vector2i(0, 8)
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, -8)
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, -8)
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, -8)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, -4)
+
+[sub_resource type="TileSet" id="TileSet_15elv"]
+tile_shape = 1
+tile_size = Vector2i(32, 16)
+sources/0 = SubResource("TileSetAtlasSource_u1vf7")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eoas"]
+atlas = ExtResource("1_ekubr")
+region = Rect2(-0.03513241, 63.792244, 32.035133, 32.207756)
+
+[node name="Mapa" type="Node2D" unique_id=845131816]
+script = ExtResource("1_u1vf7")
+
+[node name="Piso" type="TileMapLayer" parent="." unique_id=418875058]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD//wIAAAAAAAEAAAD//wUAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAcAAAAAAAEAAAABAAAAAAAAAAEAAAABAAEAAAAAAAEAAAABAAMAAAAAAAEAAAABAAQAAAAAAAEAAAABAAgAAAAAAAEAAAABAAkAAAAAAAEAAAACAAMAAAAAAAEAAAACAAQAAAAAAAEAAAACAAkAAAAAAAEAAAACAAoAAAAAAAEAAAAEAAYAAAAAAAEAAAADAAcAAAAAAAEAAAADAAUAAAAAAAEAAAD//wAAAAAAAAEAAAD/////AAAAAAEAAAAAAAAAAAAAAAEAAAD//wEAAAAAAAEAAAAAAAIAAAAAAAEAAAABAAIAAAAAAAEAAAACAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAD//wMAAAAAAAEAAAD//wQAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAUAAAAAAAEAAAABAAUAAAAAAAEAAAACAAYAAAAAAAEAAAABAAcAAAAAAAEAAAACAAgAAAAAAAEAAAACAAcAAAAAAAEAAAADAAgAAAAAAAEAAAACAAUAAAAAAAEAAAADAAQAAAAAAAEAAAAAAP//AAAAAAEAAAAAAAQAAAAAAAEAAAABAAYAAAAAAAEAAAADAAYAAAAAAAEAAAD///z/AAAAAAEAAAD///3/AAAAAAEAAAD///7/AAAAAAEAAAAAAP7/AAAAAAEAAAAAAPz/AAAAAAEAAAAAAP3/AAAAAAEAAAABAP7/AAAAAAEAAAABAP//AAAAAAEAAAACAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAACAAAAAAAAAAEAAAABAPz/AAAAAAEAAAADAAAAAAAAAAEAAAADAAEAAAAAAAEAAAACAP//AAAAAAEAAAACAP7/AAAAAAEAAAABAP3/AAAAAAEAAAD+//3/AAAAAAEAAAD+//7/AAAAAAEAAAD+////AAAAAAEAAAD9////AAAAAAEAAAD+/wAAAAAAAAEAAAD+/wEAAAAAAAEAAAD+/wIAAAAAAAEAAAD+/wMAAAAAAAEAAAD9/wEAAAAAAAEAAAD9/wAAAAAAAAEAAAD///v/AAAAAAEAAAAAAPv/AAAAAAEAAAAAAPr/AAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAEAAAAFAAQAAAAAAAEAAAAEAAUAAAAAAAEAAAAEAAQAAAAAAAEAAAD8/wEAAAAAAAEAAAD9/wIAAAAAAAEAAAD9/wMAAAAAAAEAAAD+/wQAAAAAAAEAAAD+/wUAAAAAAAEAAAD//wYAAAAAAAEAAAD//wcAAAAAAAEAAAAAAAgAAAAAAAEAAAAAAAkAAAAAAAEAAAABAAoAAAAAAAEAAAABAAsAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_15elv")
+
+[node name="CursorTile" type="Sprite2D" parent="." unique_id=1896742975]
+visible = false
+texture = SubResource("AtlasTexture_8eoas")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1314510564]

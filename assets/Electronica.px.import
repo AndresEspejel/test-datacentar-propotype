@@ -1,0 +1,16 @@
+[remap]
+
+importer="fwdab.px.import.texture2d"
+type="Texture2D"
+uid="uid://ctkv0ecy50ffp"
+path="res://.godot/imported/Electronica.px-bbdce92f7b1a7ae0ca33d699f2256195.res"
+
+[deps]
+
+source_file="res://assets/Electronica.px"
+dest_files=["res://.godot/imported/Electronica.px-bbdce92f7b1a7ae0ca33d699f2256195.res"]
+
+[params]
+
+frame_index=0
+composite_visible_layers=true
