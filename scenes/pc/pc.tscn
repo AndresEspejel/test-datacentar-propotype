@@ -19,6 +19,16 @@ offset_bottom = 8.0
 [node name="InformationControl" parent="." unique_id=46941271 instance=ExtResource("2_4brrl")]
 z_index = -1
 
+[node name="LoadingTime" type="Timer" parent="." unique_id=1476213318]
+wait_time = 2.0
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1106363605 groups=["electronic"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectionArea" unique_id=275089077]
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="signal_status_info" from="." to="InformationControl" method="_on_pc_signal_status_info"]
+[connection signal="update_data" from="." to="InformationControl" method="_on_pc_update_data"]
 [connection signal="pressed" from="IO" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="LoadingTime" to="." method="_on_loading_time_timeout"]
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]

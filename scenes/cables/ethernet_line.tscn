@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://do7fblqmetlc"]
+
+[ext_resource type="Texture2D" uid="uid://ctkv0ecy50ffp" path="res://assets/Electronica.px" id="1_qvond"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnlkg"]
+atlas = ExtResource("1_qvond")
+region = Rect2(64, 64, 32, 32)
+
+[node name="EthernetLine" type="Area2D" unique_id=294022721 groups=["ethernet_line"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=967481565]
+texture = SubResource("AtlasTexture_nnlkg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1747054064]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(0, -15, -16, -8, 0, 0, 16, -8)

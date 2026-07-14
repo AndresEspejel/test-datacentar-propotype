@@ -34,66 +34,77 @@ columns = 2
 
 [node name="LblName" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=998154513]
 layout_mode = 2
-text = "Name:"
+text = "HostName:"
 label_settings = SubResource("LabelSettings_j6o76")
 
 [node name="txtName" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=5687055]
 layout_mode = 2
-text = "SVR-000"
+text = "PC-000"
 label_settings = SubResource("LabelSettings_j6o76")
 horizontal_alignment = 1
 
-[node name="LblSatus" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1670530572]
+[node name="LblPower" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1670530572]
 layout_mode = 2
 text = "Power:"
 label_settings = SubResource("LabelSettings_j6o76")
 
-[node name="txtStatus" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=617668730]
+[node name="txtPower" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=617668730]
 layout_mode = 2
 text = "OFF"
 label_settings = SubResource("LabelSettings_j6o76")
 horizontal_alignment = 1
 
-[node name="LblSatus2" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1488232090]
+[node name="LblStatus" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1488232090]
 layout_mode = 2
-text = "Network:"
+text = "Status:"
 label_settings = SubResource("LabelSettings_j6o76")
 
-[node name="PcName3" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1978788876]
+[node name="txtStatus" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1978788876]
 layout_mode = 2
 text = "Offline"
 label_settings = SubResource("LabelSettings_j6o76")
 horizontal_alignment = 1
 
-[node name="LblSatus3" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=902110324]
+[node name="LblEnergy" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=902110324]
 layout_mode = 2
 text = "Energy :"
 label_settings = SubResource("LabelSettings_j6o76")
 
-[node name="PcName4" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=571805751]
+[node name="txtEnergy" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=571805751]
 layout_mode = 2
 text = "0 KWh"
 label_settings = SubResource("LabelSettings_j6o76")
 horizontal_alignment = 1
 
-[node name="LblSatus4" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=595595309]
-layout_mode = 2
-text = "Temp:"
-label_settings = SubResource("LabelSettings_j6o76")
-
-[node name="PcName5" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1233695405]
-layout_mode = 2
-text = "0°C"
-label_settings = SubResource("LabelSettings_j6o76")
-horizontal_alignment = 1
-
-[node name="LblSatus5" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=468603072]
+[node name="LblCpu" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=468603072]
 layout_mode = 2
 text = "CPU:"
 label_settings = SubResource("LabelSettings_j6o76")
 
-[node name="PcName6" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1719801680]
+[node name="txtCpu" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1719801680]
 layout_mode = 2
-text = "0 %"
+text = "0 GHz"
+label_settings = SubResource("LabelSettings_j6o76")
+horizontal_alignment = 1
+
+[node name="LblCpuUsed" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=580371130]
+layout_mode = 2
+text = "CPU used:"
+label_settings = SubResource("LabelSettings_j6o76")
+
+[node name="txtCpuUsed" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=931269812]
+layout_mode = 2
+text = "0%"
+label_settings = SubResource("LabelSettings_j6o76")
+horizontal_alignment = 1
+
+[node name="LblTemperature" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=595595309]
+layout_mode = 2
+text = "Temp:"
+label_settings = SubResource("LabelSettings_j6o76")
+
+[node name="txtTemperature" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1233695405]
+layout_mode = 2
+text = "0°C"
 label_settings = SubResource("LabelSettings_j6o76")
 horizontal_alignment = 1

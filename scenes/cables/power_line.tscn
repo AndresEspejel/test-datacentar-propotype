@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://duoim7k686fuk"]
+
+[ext_resource type="Texture2D" uid="uid://ctkv0ecy50ffp" path="res://assets/Electronica.px" id="1_ossbf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixb01"]
+atlas = ExtResource("1_ossbf")
+region = Rect2(32, 64, 32, 32)
+
+[node name="PowerLine" type="Area2D" unique_id=99371608 groups=["power_line"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=234988029]
+position = Vector2(0, -1)
+texture = SubResource("AtlasTexture_ixb01")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1873118672]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(0, -15, -16, -8, 0, 0, 16, -8)

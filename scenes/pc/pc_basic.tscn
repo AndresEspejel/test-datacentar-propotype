@@ -32,6 +32,10 @@ text = "IO"
 
 [node name="InformationControl" parent="." index="3" unique_id=46941271]
 visible = false
+z_index = 1
 
 [node name="Camera2D" type="Camera2D" parent="." index="4" unique_id=1281643681]
 position = Vector2(24, 0)
+
+[node name="CollisionPolygon2D" parent="DetectionArea" parent_id_path=PackedInt32Array(1106363605) index="0" unique_id=275089077]
+polygon = PackedVector2Array(-32, 1, -32, 16, -16, 24, 16, 24, 32, 16, 32, 1, 16, -7, -16, -7)

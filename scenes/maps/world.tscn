@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://42k4nikscb0k"]
+
+[ext_resource type="PackedScene" uid="uid://dvfyys2lvuq30" path="res://scenes/mapa.tscn" id="1_pcytr"]
+[ext_resource type="Script" uid="uid://dwtf1278tbvg4" path="res://scripts/network/network_manager.gd" id="2_bxnbg"]
+
+[node name="World" type="Node2D" unique_id=1016313794]
+
+[node name="TileMapFloor" parent="." unique_id=845131816 instance=ExtResource("1_pcytr")]
+
+[node name="TileMapObjects" type="Node2D" parent="." unique_id=2109840995]
+
+[node name="Buildings" type="Node2D" parent="." unique_id=241836963]
+
+[node name="NetworkManager" type="Node" parent="." unique_id=1345263885]
+script = ExtResource("2_bxnbg")
