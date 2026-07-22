@@ -2,11 +2,57 @@
 
 [ext_resource type="PackedScene" uid="uid://cr7dw0pmuquqc" path="res://scenes/pc/pc.tscn" id="1_6syv6"]
 [ext_resource type="Script" uid="uid://da7nqkmw4f23f" path="res://scenes/pc/pc_basic.gd" id="2_stk6l"]
-[ext_resource type="Texture2D" uid="uid://ctkv0ecy50ffp" path="res://assets/Electronica.px" id="3_onbkh"]
+[ext_resource type="Texture2D" uid="uid://qknxn1j2bdqo" path="res://assets/PcBasica.px" id="3_onbkh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_stk6l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_onbkh"]
 atlas = ExtResource("3_onbkh")
-region = Rect2(128, 0, 32, 32)
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es3mw"]
+atlas = ExtResource("3_onbkh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w161b"]
+atlas = ExtResource("3_onbkh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhuf2"]
+atlas = ExtResource("3_onbkh")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l53j"]
+atlas = ExtResource("3_onbkh")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnngy"]
+atlas = ExtResource("3_onbkh")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_15elv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onbkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es3mw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w161b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhuf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l53j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnngy")
+}],
+"loop": 1,
+"name": &"power",
+"speed": 8.0
+}]
 
 [sub_resource type="Theme" id="Theme_vayil"]
 default_font_size = 2
@@ -15,10 +61,14 @@ Button/font_sizes/font_size = 7
 [node name="PcBasic" unique_id=2118404311 instance=ExtResource("1_6syv6")]
 script = ExtResource("2_stk6l")
 
-[node name="Sprite2D" parent="." index="0" unique_id=773455102]
-texture = SubResource("AtlasTexture_stk6l")
+[node name="Sprite2D" parent="." index="0" unique_id=1976985814]
+sprite_frames = SubResource("SpriteFrames_15elv")
+animation = &"power"
+autoplay = "power"
+frame_progress = 0.5748999
 
 [node name="CollisionPolygon2D" parent="." index="1" unique_id=345068914]
+position = Vector2(-2, -2)
 polygon = PackedVector2Array(-9, -4, 7, -12, 16, -9, 16, 9, 0, 16, -9, 12)
 
 [node name="IO" parent="." index="2" unique_id=733915151]
@@ -33,9 +83,6 @@ text = "IO"
 [node name="InformationControl" parent="." index="3" unique_id=46941271]
 visible = false
 z_index = 1
-
-[node name="Camera2D" type="Camera2D" parent="." index="4" unique_id=1281643681]
-position = Vector2(24, 0)
 
 [node name="CollisionPolygon2D" parent="DetectionArea" parent_id_path=PackedInt32Array(1106363605) index="0" unique_id=275089077]
 polygon = PackedVector2Array(-32, 1, -32, 16, -16, 24, 16, 24, 32, 16, 32, 1, 16, -7, -16, -7)

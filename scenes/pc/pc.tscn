@@ -8,7 +8,7 @@ input_pickable = true
 freeze = true
 script = ExtResource("1_vayil")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=773455102]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1976985814]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=345068914]
 

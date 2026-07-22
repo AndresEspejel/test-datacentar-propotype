@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="test-datacentar-propotype"
-run/main_scene="uid://dvfyys2lvuq30"
+run/main_scene="uid://42k4nikscb0k"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/stretch/scale=1.5
 
 [editor_plugins]
 
