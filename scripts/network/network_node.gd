@@ -27,6 +27,7 @@ func delete_neighbors_in(position_neig: Vector2i) -> void:
 	var neigbor := get_neighbor_in(position_neig)
 	if neigbor:
 		disconnect_node(neigbor)
+		active = false
 		print("Borrando el nodo" + str(neigbor))
 
 

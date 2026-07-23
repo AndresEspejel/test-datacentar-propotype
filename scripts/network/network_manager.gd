@@ -37,6 +37,7 @@ func _ready() -> void:
 	add_node(node_f)
 	
 	print(nodes)
+	print("Nodos en linea (aire acondicionado): "+ str(get_network_nodes(NetworkTypes.Type.POWER,Vector2i(0,0))))
 	
 	
 	
@@ -58,31 +59,76 @@ func find_neighbors(node:NetworkNode)-> void:
 	
 
 	if (nodes[node.network_type].has(position_up)) :
-		print("Soy" +str(node.position) + " Tengo un nodo arriba "+ str(position_up))
+		#print("Soy" +str(node.position) + " Tengo un nodo arriba "+ str(position_up))
 		node.connect_node(nodes[node.network_type][position_up])
 	else:
 		node.delete_neighbors_in(position_up)
 	
 	if(nodes[node.network_type].has(position_right)):
-		print("Soy" +str(node.position) + " Tengo un nodo Derecha "+ str(position_right))
+		#print("Soy" +str(node.position) + " Tengo un nodo Derecha "+ str(position_right))
 		node.connect_node(nodes[node.network_type][position_right])
 	else:
 		node.delete_neighbors_in(position_right)
 	
 	if(nodes[node.network_type].has(position_down)):
-		print("Soy" +str(node.position) + " Tengo un nodo abajo "+ str(position_down))
+		#print("Soy" +str(node.position) + " Tengo un nodo abajo "+ str(position_down))
 		node.connect_node(nodes[node.network_type][position_down])
 	else:
 		node.delete_neighbors_in(position_down)
 	
 	if(nodes[node.network_type].has(position_left)):
-		print("Soy" +str(node.position) + " Tengo un nodo izquerda "+ str(position_left))
+		#print("Soy" +str(node.position) + " Tengo un nodo izquerda "+ str(position_left))
 		node.connect_node(nodes[node.network_type][position_left])
 	else:
 		node.delete_neighbors_in(position_left)
 
 
-func get_network_nodes(type_networt: NetworkTypes, _position: Vector2i):
+func get_network_nodes(type_networt: NetworkTypes.Type, _position: Vector2i):
 	##TODO obtener los nodos conectado a partir de cieto tipo
 	##TODO despues de obtener una red conectada, obtenerla a partir de una opsicion
+	var explore_nodes = nodes[type_networt]
+	var node_in_line = algorithm_dfs(explore_nodes)
+	
+	return node_in_line
+
+func algorithm_dfs(explore_nodes:Dictionary):
+	
 	pass
+	
+	##Función DFS(nodo_actual, lista_visitados):
+	#Marcar nodo_actual como visitado
+	#Hacer algo con nodo_actual (ej. imprimir o procesar)
+#
+	#Para cada vecino en vecinos_de(nodo_actual):
+		#Si el vecino no ha sido visitado:
+			#Llamar a DFS(vecino, lista_visitados)
+#extends Node
+#
+## Representación del grafo (nodos y sus conexiones)
+#var grafo = {
+	#"A": ["B", "C"],
+	#"B": ["A", "D", "E"],
+	#"C": ["A", "F"],
+	#"D": ["B"],
+	#"E": ["B", "F"],
+	#"F": ["C", "E"]
+#}
+#
+#var visitados: Array = []
+#
+#func _ready() -> Vector2:
+	## Iniciamos la búsqueda desde el nodo "A"
+	#dfs("A")
+	#print("Recorrido completo: ", visitados)
+	#return Vector2.ZERO
+#
+#func dfs(nodo_actual: String) -> void:
+	## 1. Marcamos el nodo como visitado
+	#visitados.append(nodo_actual)
+	#print("Visitando: ", nodo_actual)
+#
+	## 2. Iteramos sobre los vecinos de este nodo
+	#for vecino in grafo[nodo_actual]:
+		## 3. Si el vecino no ha sido visitado, profundizamos en él
+		#if not visitados.has(vecino):
+			#dfs(vecino)
