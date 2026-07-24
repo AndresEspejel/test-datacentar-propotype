@@ -2,13 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://dvfyys2lvuq30" path="res://scenes/mapa.tscn" id="1_pcytr"]
 [ext_resource type="PackedScene" uid="uid://ch5lrqta4plvo" path="res://scenes/pc/pc_basic.tscn" id="2_6w65o"]
+[ext_resource type="Script" uid="uid://clbhd1h7ytam8" path="res://scenes/maps/network_renderer.gd" id="2_55aix"]
 [ext_resource type="Script" uid="uid://dwtf1278tbvg4" path="res://scripts/network/network_manager.gd" id="2_bxnbg"]
 
 [node name="World" type="Node2D" unique_id=1016313794]
 
 [node name="TileMapFloor" parent="." unique_id=845131816 instance=ExtResource("1_pcytr")]
 
-[node name="TileMapObjects" type="Node2D" parent="." unique_id=2109840995]
+[node name="NetworkRenderer" type="Node2D" parent="." unique_id=2109840995]
+script = ExtResource("2_55aix")
 
 [node name="Buildings" type="Node2D" parent="." unique_id=241836963]
 

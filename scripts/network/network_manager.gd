@@ -13,31 +13,31 @@ func _ready() -> void:
 	var node_a = NetworkNode.new()
 	node_a.position = Vector2i(0,0)
 	node_a.network_type = NetworkTypes.Type.AIR
+	add_node(node_a)
 	
 	var node_b = NetworkNode.new()
 	node_b.position = Vector2i(0,1)
 	node_b.network_type = NetworkTypes.Type.AIR
+	add_node(node_b)
 	
 	var node_c = NetworkNode.new()
 	node_c.position = Vector2i(0,-1)
 	node_c.network_type = NetworkTypes.Type.AIR
+	add_node(node_c)
 	
 	var node_d = NetworkNode.new()
 	node_d.position = Vector2i(1,0)
 	node_d.network_type = NetworkTypes.Type.AIR
+	add_node(node_d)
 	
 	var node_f = NetworkNode.new()
 	node_f.position = Vector2i(-1,0)
 	node_f.network_type = NetworkTypes.Type.AIR
-	
-	add_node(node_a)
-	add_node(node_b)
-	add_node(node_c)
-	add_node(node_d)
 	add_node(node_f)
 	
+	
 	print(nodes)
-	print("Nodos en linea (aire acondicionado): "+ str(get_network_nodes(NetworkTypes.Type.POWER,Vector2i(0,0))))
+	print("Nodos en linea (aire acondicionado): "+ str(get_network_nodes(NetworkTypes.Type.AIR,Vector2i(0,0))))
 	
 	
 	
@@ -83,52 +83,23 @@ func find_neighbors(node:NetworkNode)-> void:
 		node.delete_neighbors_in(position_left)
 
 
-func get_network_nodes(type_networt: NetworkTypes.Type, _position: Vector2i):
-	##TODO obtener los nodos conectado a partir de cieto tipo
-	##TODO despues de obtener una red conectada, obtenerla a partir de una opsicion
-	var explore_nodes = nodes[type_networt]
-	var node_in_line = algorithm_dfs(explore_nodes)
-	
-	return node_in_line
+var visited_nodes: Dictionary = {}
 
-func algorithm_dfs(explore_nodes:Dictionary):
-	
-	pass
-	
-	##Función DFS(nodo_actual, lista_visitados):
-	#Marcar nodo_actual como visitado
-	#Hacer algo con nodo_actual (ej. imprimir o procesar)
-#
-	#Para cada vecino en vecinos_de(nodo_actual):
-		#Si el vecino no ha sido visitado:
-			#Llamar a DFS(vecino, lista_visitados)
-#extends Node
-#
-## Representación del grafo (nodos y sus conexiones)
-#var grafo = {
-	#"A": ["B", "C"],
-	#"B": ["A", "D", "E"],
-	#"C": ["A", "F"],
-	#"D": ["B"],
-	#"E": ["B", "F"],
-	#"F": ["C", "E"]
-#}
-#
-#var visitados: Array = []
-#
-#func _ready() -> Vector2:
-	## Iniciamos la búsqueda desde el nodo "A"
-	#dfs("A")
-	#print("Recorrido completo: ", visitados)
-	#return Vector2.ZERO
-#
-#func dfs(nodo_actual: String) -> void:
-	## 1. Marcamos el nodo como visitado
-	#visitados.append(nodo_actual)
-	#print("Visitando: ", nodo_actual)
-#
-	## 2. Iteramos sobre los vecinos de este nodo
-	#for vecino in grafo[nodo_actual]:
-		## 3. Si el vecino no ha sido visitado, profundizamos en él
-		#if not visitados.has(vecino):
-			#dfs(vecino)
+func get_network_nodes(type_network: NetworkTypes.Type, position: Vector2i) -> Array[NetworkNode]:
+	visited_nodes.clear()
+	if !nodes.has(type_network):
+		return []
+	var network = nodes[type_network]
+	if !network.has(position):
+		return []
+	var start = network[position]
+	search_neighbors(start)
+	return visited_nodes.keys()
+
+
+func search_neighbors(node: NetworkNode):
+	visited_nodes[node] = true
+	for neighbor in node.neighbors:
+		if visited_nodes.has(neighbor):
+			continue
+		search_neighbors(neighbor)
