@@ -1,5 +1,6 @@
 class_name NetworkManager
 extends Node
+signal draw_node(node: NetworkNode)
 
 var nodes: Dictionary = {
 	NetworkTypes.Type.POWER:{},
@@ -18,17 +19,17 @@ func _ready() -> void:
 	var node_b = NetworkNode.new()
 	node_b.position = Vector2i(0,1)
 	node_b.network_type = NetworkTypes.Type.AIR
-	add_node(node_b)
+	#add_node(node_b)
 	
 	var node_c = NetworkNode.new()
 	node_c.position = Vector2i(0,-1)
 	node_c.network_type = NetworkTypes.Type.AIR
-	add_node(node_c)
+	#add_node(node_c)
 	
 	var node_d = NetworkNode.new()
 	node_d.position = Vector2i(1,0)
 	node_d.network_type = NetworkTypes.Type.AIR
-	add_node(node_d)
+	#add_node(node_d)
 	
 	var node_f = NetworkNode.new()
 	node_f.position = Vector2i(-1,0)
@@ -44,6 +45,7 @@ func _ready() -> void:
 func add_node(node:NetworkNode)-> void:
 	nodes[node.network_type][node.position] = node
 	find_neighbors(node)
+	draw_node.emit(node)
 
 
 func find_neighbors(node:NetworkNode)-> void:
