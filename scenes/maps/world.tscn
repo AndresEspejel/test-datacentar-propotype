@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://clbhd1h7ytam8" path="res://scenes/maps/network_renderer.gd" id="2_55aix"]
 [ext_resource type="Script" uid="uid://dwtf1278tbvg4" path="res://scripts/network/network_manager.gd" id="2_bxnbg"]
 [ext_resource type="Texture2D" uid="uid://ctkv0ecy50ffp" path="res://assets/Electronica.px" id="3_lvkeh"]
+[ext_resource type="PackedScene" uid="uid://duoim7k686fuk" path="res://scenes/cables/power_line.tscn" id="4_av32x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_74gp3"]
 texture = ExtResource("3_lvkeh")
@@ -39,8 +40,9 @@ sources/0 = SubResource("TileSetAtlasSource_74gp3")
 
 [node name="NetworkRenderer" type="Node2D" parent="." unique_id=2109840995]
 script = ExtResource("2_55aix")
+power_line = ExtResource("4_av32x")
 
-[node name="TileMapAir" type="TileMapLayer" parent="NetworkRenderer" unique_id=1568470463]
+[node name="TileMap" type="TileMapLayer" parent="NetworkRenderer" unique_id=1568470463]
 tile_set = SubResource("TileSet_5fqxl")
 
 [node name="Buildings" type="Node2D" parent="." unique_id=241836963]

@@ -1,14 +1,13 @@
 extends Node2D
-@onready var tile_map_air: TileMapLayer = $TileMapAir
+@onready var tile_map_air: TileMapLayer = $TileMap
+@export var power_line: PackedScene
 
 func draw_node(node: NetworkNode):
 	print("Dibujando nodo")
-	tile_map_air.set_cell(
-		node.position,
-		0,
-		Vector2i(3,2)
-	)
-
+	var power_line_instance = power_line.instantiate()
+	add_child(power_line_instance)
+	power_line_instance.global_position = tile_map_air.map_to_local(node.position)
+	
 func update_node(node: NetworkNode):
 	pass
 

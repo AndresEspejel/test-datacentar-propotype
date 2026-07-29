@@ -9,9 +9,9 @@ region = Rect2(32, 64, 32, 32)
 [node name="PowerLine" type="Area2D" unique_id=99371608 groups=["power_line"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=234988029]
-position = Vector2(0, -1)
+position = Vector2(0, 8)
 texture = SubResource("AtlasTexture_ixb01")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1873118672]
-position = Vector2(0, -1)
+position = Vector2(0, 8)
 polygon = PackedVector2Array(0, -15, -16, -8, 0, 0, 16, -8)

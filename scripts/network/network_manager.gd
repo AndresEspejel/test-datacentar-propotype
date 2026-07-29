@@ -13,27 +13,27 @@ func _ready() -> void:
 	
 	var node_a = NetworkNode.new()
 	node_a.position = Vector2i(0,0)
-	node_a.network_type = NetworkTypes.Type.AIR
+	node_a.network_type = NetworkTypes.Type.POWER
 	add_node(node_a)
 	
 	var node_b = NetworkNode.new()
 	node_b.position = Vector2i(0,1)
-	node_b.network_type = NetworkTypes.Type.AIR
-	#add_node(node_b)
+	node_b.network_type = NetworkTypes.Type.POWER
+	add_node(node_b)
 	
 	var node_c = NetworkNode.new()
 	node_c.position = Vector2i(0,-1)
-	node_c.network_type = NetworkTypes.Type.AIR
-	#add_node(node_c)
+	node_c.network_type = NetworkTypes.Type.POWER
+	add_node(node_c)
 	
 	var node_d = NetworkNode.new()
 	node_d.position = Vector2i(1,0)
-	node_d.network_type = NetworkTypes.Type.AIR
-	#add_node(node_d)
+	node_d.network_type = NetworkTypes.Type.POWER
+	add_node(node_d)
 	
 	var node_f = NetworkNode.new()
 	node_f.position = Vector2i(-1,0)
-	node_f.network_type = NetworkTypes.Type.AIR
+	node_f.network_type = NetworkTypes.Type.POWER
 	add_node(node_f)
 	
 	
