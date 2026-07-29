@@ -69,7 +69,7 @@ func powerOn():
 	loading_time.start()
 	status = "Starte"
 	if is_connect_to_internet:
-		status = "Oneline"
+		status = "Online"
 
 func powerOff():
 	loading_time.stop()

@@ -5,7 +5,9 @@
 [ext_resource type="Script" uid="uid://clbhd1h7ytam8" path="res://scenes/maps/network_renderer.gd" id="2_55aix"]
 [ext_resource type="Script" uid="uid://dwtf1278tbvg4" path="res://scripts/network/network_manager.gd" id="2_bxnbg"]
 [ext_resource type="Texture2D" uid="uid://ctkv0ecy50ffp" path="res://assets/Electronica.px" id="3_lvkeh"]
-[ext_resource type="PackedScene" uid="uid://duoim7k686fuk" path="res://scenes/cables/power_line.tscn" id="4_av32x"]
+[ext_resource type="PackedScene" uid="uid://duoim7k686fuk" path="res://scenes/network_node/power_line.tscn" id="4_av32x"]
+[ext_resource type="PackedScene" uid="uid://do7fblqmetlc" path="res://scenes/network_node/ethernet_line.tscn" id="4_pq5yi"]
+[ext_resource type="PackedScene" uid="uid://d0wca4a8nibpd" path="res://scenes/network_node/air_line.tscn" id="5_av32x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_74gp3"]
 texture = ExtResource("3_lvkeh")
@@ -39,8 +41,11 @@ sources/0 = SubResource("TileSetAtlasSource_74gp3")
 [node name="TileMapFloor" parent="." unique_id=845131816 instance=ExtResource("1_pcytr")]
 
 [node name="NetworkRenderer" type="Node2D" parent="." unique_id=2109840995]
+y_sort_enabled = true
 script = ExtResource("2_55aix")
 power_line = ExtResource("4_av32x")
+ethernet_line = ExtResource("4_pq5yi")
+air_line = ExtResource("5_av32x")
 
 [node name="TileMap" type="TileMapLayer" parent="NetworkRenderer" unique_id=1568470463]
 tile_set = SubResource("TileSet_5fqxl")
@@ -48,7 +53,7 @@ tile_set = SubResource("TileSet_5fqxl")
 [node name="Buildings" type="Node2D" parent="." unique_id=241836963]
 
 [node name="PcBasic" parent="Buildings" unique_id=2118404311 instance=ExtResource("2_6w65o")]
-position = Vector2(58, 26)
+position = Vector2(68, -2)
 
 [node name="NetworkManager" type="Node" parent="." unique_id=1345263885]
 script = ExtResource("2_bxnbg")

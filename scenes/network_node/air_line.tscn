@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://d0wca4a8nibpd"]
+
+[ext_resource type="Texture2D" uid="uid://bss2qm8sr25ec" path="res://assets/UntitledArtwork2.px" id="1_7l4ai"]
+[ext_resource type="Script" uid="uid://c8gnosa8o7co5" path="res://scenes/network_node/air_line.gd" id="1_j7f00"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7f00"]
+atlas = ExtResource("1_7l4ai")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsj6o"]
+atlas = ExtResource("1_7l4ai")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8w3k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7f00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsj6o")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AirLine" type="Area2D" unique_id=1951531279]
+script = ExtResource("1_j7f00")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1539455065]
+sprite_frames = SubResource("SpriteFrames_i8w3k")
+autoplay = "default"
+frame_progress = 0.95213044
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1418290299]
+polygon = PackedVector2Array(-42, 0, 0, -26, 45, 0, 0, 24)

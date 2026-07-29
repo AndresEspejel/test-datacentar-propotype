@@ -1,0 +1,17 @@
+[remap]
+
+importer="fwdab.px.import.spritesheet"
+type="Texture2D"
+uid="uid://bss2qm8sr25ec"
+path="res://.godot/imported/UntitledArtwork2.px-210a17af3bd7335d3786c342c96c5e6f.res"
+
+[deps]
+
+source_file="res://assets/UntitledArtwork2.px"
+dest_files=["res://.godot/imported/UntitledArtwork2.px-210a17af3bd7335d3786c342c96c5e6f.res"]
+
+[params]
+
+animation_tag=0
+sheet_columns=2
+composite_visible_layers=true

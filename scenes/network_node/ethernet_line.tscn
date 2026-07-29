@@ -9,8 +9,9 @@ region = Rect2(64, 64, 32, 32)
 [node name="EthernetLine" type="Area2D" unique_id=294022721 groups=["ethernet_line"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=967481565]
+position = Vector2(0, 8)
 texture = SubResource("AtlasTexture_nnlkg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1747054064]
-position = Vector2(0, -1)
+position = Vector2(0, 8)
 polygon = PackedVector2Array(0, -15, -16, -8, 0, 0, 16, -8)

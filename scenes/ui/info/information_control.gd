@@ -32,7 +32,7 @@ func update_color_status(_power: bool,status:String):
 		txt_power.modulate = Color.GREEN
 		txt_status.modulate = Color.ORANGE
 		return
-	if status == "Oneline":
+	if status == "Online":
 		txt_power.modulate = Color.GREEN
 		txt_status.modulate = Color.GREEN
 		return
