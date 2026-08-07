@@ -1,54 +1,41 @@
 [gd_scene format=3 uid="uid://d0wca4a8nibpd"]
 
-[ext_resource type="Texture2D" uid="uid://bss2qm8sr25ec" path="res://assets/UntitledArtwork2.px" id="1_7l4ai"]
+[ext_resource type="PackedScene" uid="uid://clned6d07uq73" path="res://scenes/network_node/node_line.tscn" id="1_7l4ai"]
 [ext_resource type="Script" uid="uid://c8gnosa8o7co5" path="res://scenes/network_node/air_line.gd" id="1_j7f00"]
+[ext_resource type="Texture2D" uid="uid://bss2qm8sr25ec" path="res://assets/UntitledArtwork2.px" id="3_vsj6o"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_varx5"]
-atlas = ExtResource("1_7l4ai")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb0an"]
+atlas = ExtResource("3_vsj6o")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hfm7a"]
-atlas = ExtResource("1_7l4ai")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bvki"]
+atlas = ExtResource("3_vsj6o")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xgr4n"]
-atlas = ExtResource("1_7l4ai")
+[sub_resource type="AtlasTexture" id="AtlasTexture_varx5"]
+atlas = ExtResource("3_vsj6o")
 region = Rect2(0, 96, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_i8w3k"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_j7f00"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb0an")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bvki")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_varx5")
 }],
 "loop": 1,
-"name": &"idle_L",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hfm7a")
-}],
-"loop": 1,
-"name": &"idle_R",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xgr4n")
-}],
-"loop": 1,
-"name": &"idle_X",
+"name": &"default",
 "speed": 5.0
 }]
 
-[node name="AirLine" type="Area2D" unique_id=1951531279]
+[node name="AirLine" unique_id=1951531279 instance=ExtResource("1_7l4ai")]
 script = ExtResource("1_j7f00")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1539455065]
-sprite_frames = SubResource("SpriteFrames_i8w3k")
-animation = &"idle_L"
-autoplay = "idle_L"
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1418290299]
-polygon = PackedVector2Array(-42, 0, 0, -26, 45, 0, 0, 24)
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1539455065]
+sprite_frames = SubResource("SpriteFrames_j7f00")
+autoplay = "default"

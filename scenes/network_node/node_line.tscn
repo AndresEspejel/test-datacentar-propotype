@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://clned6d07uq73"]
+
+[ext_resource type="Script" uid="uid://dhvwaxps5t3ss" path="res://scenes/network_node/node_line.gd" id="1_et4s3"]
+
+[node name="NodeLine" type="Area2D" unique_id=1951531279]
+script = ExtResource("1_et4s3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1539455065]
+autoplay = "idle_L"
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1418290299]
+polygon = PackedVector2Array(-42, 0, 0, -26, 45, 0, 0, 24)
