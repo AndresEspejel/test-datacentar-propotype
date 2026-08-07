@@ -21,15 +21,25 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gb0an")
+}],
+"loop": 0,
+"name": &"default_l",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6bvki")
+}],
+"loop": 0,
+"name": &"default_r",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_varx5")
 }],
-"loop": 1,
-"name": &"default",
+"loop": 0,
+"name": &"default_x",
 "speed": 5.0
 }]
 
@@ -38,4 +48,5 @@ script = ExtResource("1_j7f00")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1539455065]
 sprite_frames = SubResource("SpriteFrames_j7f00")
-autoplay = "default"
+animation = &"default_l"
+autoplay = ""
