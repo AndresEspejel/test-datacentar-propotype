@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://duoim7k686fuk" path="res://scenes/network_node/power_line.tscn" id="4_av32x"]
 [ext_resource type="PackedScene" uid="uid://do7fblqmetlc" path="res://scenes/network_node/ethernet_line.tscn" id="4_pq5yi"]
 [ext_resource type="PackedScene" uid="uid://d0wca4a8nibpd" path="res://scenes/network_node/air_line.tscn" id="5_av32x"]
+[ext_resource type="Script" uid="uid://d2g30w7tqwulx" path="res://scenes/maps/build_manager.gd" id="9_dnf87"]
+[ext_resource type="PackedScene" uid="uid://cib8tqb0gwqtk" path="res://scenes/ui/MainControl/main_control.tscn" id="9_s5d3o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_74gp3"]
 texture = ExtResource("3_lvkeh")
@@ -58,8 +60,12 @@ position = Vector2(68, -2)
 [node name="NetworkManager" type="Node" parent="." unique_id=1345263885]
 script = ExtResource("2_bxnbg")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=749862715]
-position = Vector2(35, 15)
-zoom = Vector2(2, 2)
+[node name="BuildManager" type="Node" parent="." unique_id=10963324]
+script = ExtResource("9_dnf87")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1129536049]
+
+[node name="HUD" parent="CanvasLayer" unique_id=2034365019 instance=ExtResource("9_s5d3o")]
 
 [connection signal="draw_node" from="NetworkManager" to="NetworkRenderer" method="_on_network_manager_draw_node"]
+[connection signal="node_type_selected" from="CanvasLayer/HUD" to="BuildManager" method="_on_hud_node_type_selected"]

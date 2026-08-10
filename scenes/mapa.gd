@@ -1,6 +1,7 @@
 extends Node2D
 @onready var piso: TileMapLayer = $Piso
 @onready var cursor_tile: Sprite2D = $CursorTile
+@onready var build_manager: BuildManager = $"../BuildManager"
 
 
 func _ready():
@@ -14,6 +15,7 @@ func _input(event):
 
 		if piso.get_cell_source_id(celda) != -1:
 			print("Tile:", celda)
+			build_manager.build(celda)
 
 
 func _process(_delta):

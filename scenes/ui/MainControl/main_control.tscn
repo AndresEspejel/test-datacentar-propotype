@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cib8tqb0gwqtk"]
+
+[ext_resource type="Script" uid="uid://bji3ue4brk1gk" path="res://scenes/ui/MainControl/main_control.gd" id="1_bxdt4"]
+
+[node name="HUD" type="Control" unique_id=2034365019]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_bxdt4")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1273448583]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BoxContainerNode" type="HBoxContainer" parent="MarginContainer" unique_id=1628356208]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="AirNode" type="Button" parent="MarginContainer/BoxContainerNode" unique_id=2016769154]
+layout_mode = 2
+text = "AIR"
+
+[node name="PowerNode" type="Button" parent="MarginContainer/BoxContainerNode" unique_id=1833154681]
+layout_mode = 2
+text = "POWER
+"
+
+[node name="EthernetNode" type="Button" parent="MarginContainer/BoxContainerNode" unique_id=1732247443]
+layout_mode = 2
+text = "Ethernet"
+
+[connection signal="pressed" from="MarginContainer/BoxContainerNode/AirNode" to="." method="_on_air_node_pressed"]
+[connection signal="pressed" from="MarginContainer/BoxContainerNode/PowerNode" to="." method="_on_power_node_pressed"]
+[connection signal="pressed" from="MarginContainer/BoxContainerNode/EthernetNode" to="." method="_on_ethernet_node_pressed"]
