@@ -13,3 +13,6 @@ func build(position: Vector2i) -> void:
 	node.position = position
 	node.network_type = selected_type
 	network_manager.add_node(node)
+
+func delete_node(position: Vector2i) -> void:
+	network_manager.remove_node(position, selected_type)

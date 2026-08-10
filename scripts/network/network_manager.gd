@@ -20,6 +20,9 @@ func add_node(node:NetworkNode)-> void:
 	for neighbor in node.neighbors:
 		update_node_visual.emit(neighbor)
 
+func remove_node(position: Vector2i, type: NetworkTypes.Type)->void:
+	pass
+
 func find_neighbors(node:NetworkNode)-> void:
 	var position_center: Vector2i = Vector2i(node.position.x,node.position.y)
 	
@@ -28,30 +31,27 @@ func find_neighbors(node:NetworkNode)-> void:
 	var position_down: Vector2i = Vector2i(position_center.x,position_center.y+1)
 	var position_left: Vector2i = Vector2i(position_center.x-1,position_center.y)
 	
-	
-	#print("Central:"+ str(position_center)+"Up"+str(position_up) + "Right" +str(position_right)+"Dowm"+str(position_down)+"Left"+str(position_left))
-	
 
 	if (nodes[node.network_type].has(position_up)) :
-		print("Soy" +str(node.position) + " Tengo un nodo arriba "+ str(position_up))
+		#print("Soy" +str(node.position) + " Tengo un nodo arriba "+ str(position_up))
 		node.connect_node(nodes[node.network_type][position_up])
 	else:
 		node.delete_neighbors_in(position_up)
 	
 	if(nodes[node.network_type].has(position_right)):
-		print("Soy" +str(node.position) + " Tengo un nodo Derecha "+ str(position_right))
+		#print("Soy" +str(node.position) + " Tengo un nodo Derecha "+ str(position_right))
 		node.connect_node(nodes[node.network_type][position_right])
 	else:
 		node.delete_neighbors_in(position_right)
 	
 	if(nodes[node.network_type].has(position_down)):
-		print("Soy" +str(node.position) + " Tengo un nodo abajo "+ str(position_down))
+		#print("Soy" +str(node.position) + " Tengo un nodo abajo "+ str(position_down))
 		node.connect_node(nodes[node.network_type][position_down])
 	else:
 		node.delete_neighbors_in(position_down)
 	
 	if(nodes[node.network_type].has(position_left)):
-		print("Soy" +str(node.position) + " Tengo un nodo izquerda "+ str(position_left))
+		#print("Soy" +str(node.position) + " Tengo un nodo izquerda "+ str(position_left))
 		node.connect_node(nodes[node.network_type][position_left])
 	else:
 		node.delete_neighbors_in(position_left)
