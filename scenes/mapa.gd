@@ -15,16 +15,15 @@ func _input(event):
 
 		if piso.get_cell_source_id(celda) != -1:
 			print("Tile:", celda)
-		if event.is_action_pressed("clic_left"):
-			build_manager.build(celda)
-			
-		if event.is_action_pressed("clic_right"):
-			print("Borrar nodo")
-			build_manager.delete_node(celda)
-			
-		if event.is_action_pressed("clic_middle"):
-			print("Mover camara")
-
+			if event.is_action_pressed("clic_left"):
+				build_manager.build(celda)
+				
+			if event.is_action_pressed("clic_right"):
+				print("Borrar nodo")
+				build_manager.delete_node(celda)
+				
+			if event.is_action_pressed("clic_middle"):
+				print("Mover camara")
 
 func _process(_delta):
 	var mouse = get_global_mouse_position()
