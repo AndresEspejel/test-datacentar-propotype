@@ -4,9 +4,11 @@ extends Node2D
 @export var ethernet_line: PackedScene
 @export var air_line: PackedScene
 
+var rendered_nodes: Dictionary = {}
 
 
 func draw_node(node: NetworkNode):
+	
 	var line_instance = null
 	
 	if node.network_type == NetworkTypes.Type.AIR:
@@ -21,7 +23,14 @@ func draw_node(node: NetworkNode):
 	line_instance.setup(node)
 	add_child(line_instance)
 	line_instance.global_position = tile_map_air.map_to_local(node.position)
+	rendered_nodes[node.position] = line_instance
 	line_instance.update_visual(node)
 
 func _on_network_manager_draw_node(node: NetworkNode) -> void:
 	draw_node(node)
+
+
+func _on_network_manager_update_node_visual(node: NetworkNode) -> void:
+	if rendered_nodes.has(node.position):
+		var line_instance = rendered_nodes[node.position]
+		line_instance.update_visual(node)

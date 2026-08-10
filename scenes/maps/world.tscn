@@ -68,4 +68,5 @@ script = ExtResource("9_dnf87")
 [node name="HUD" parent="CanvasLayer" unique_id=2034365019 instance=ExtResource("9_s5d3o")]
 
 [connection signal="draw_node" from="NetworkManager" to="NetworkRenderer" method="_on_network_manager_draw_node"]
+[connection signal="update_node_visual" from="NetworkManager" to="NetworkRenderer" method="_on_network_manager_update_node_visual"]
 [connection signal="node_type_selected" from="CanvasLayer/HUD" to="BuildManager" method="_on_hud_node_type_selected"]
