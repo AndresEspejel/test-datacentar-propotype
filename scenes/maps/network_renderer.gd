@@ -34,3 +34,15 @@ func _on_network_manager_update_node_visual(node: NetworkNode) -> void:
 	if rendered_nodes.has(node.position):
 		var line_instance = rendered_nodes[node.position]
 		line_instance.update_visual(node)
+
+func delete_node(node: NetworkNode) -> void:
+	if not rendered_nodes.has(node.position):
+		return
+	var line_instance = rendered_nodes[node.position]
+	rendered_nodes.erase(node.position)
+	line_instance.deleted()
+
+
+
+func _on_network_manager_deleted_node_visual(node: NetworkNode) -> void:
+	delete_node(node)

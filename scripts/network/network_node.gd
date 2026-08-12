@@ -19,8 +19,11 @@ func connect_node(other: NetworkNode):
 		other.neighbors.append(self)
 
 func disconnect_node(other: NetworkNode) -> void:
+	if not neighbors.has(other):
+		return
 	neighbors.erase(other)
-	other.neighbors.erase(self)
+	if other.neighbors.has(self):
+		other.neighbors.erase(self)
 
 
 func delete_neighbors_in(position_neig: Vector2i) -> void:

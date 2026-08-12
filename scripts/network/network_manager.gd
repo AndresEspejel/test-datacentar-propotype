@@ -1,7 +1,9 @@
 class_name NetworkManager
 extends Node
+
 signal draw_node(node: NetworkNode)
-signal update_node_visual(node)
+signal update_node_visual(node: NetworkNode)
+signal deleted_node_visual(node: NetworkNode)
 
 var nodes: Dictionary = {
 	NetworkTypes.Type.POWER:{},
@@ -21,7 +23,27 @@ func add_node(node:NetworkNode)-> void:
 		update_node_visual.emit(neighbor)
 
 func remove_node(position: Vector2i, type: NetworkTypes.Type)->void:
-	pass
+	if not nodes[type].has(position):
+		return
+	
+	var node_to_delete: NetworkNode = nodes[type][position]
+	
+	# Guardamos los vecinos antes de desconectar
+	var neighbors := node_to_delete.neighbors.duplicate()
+	
+	# Desconectar
+	for neighbor in neighbors:
+		neighbor.disconnect_node(node_to_delete)
+	
+	# Eliminar visual
+	deleted_node_visual.emit(node_to_delete)
+	
+	# Eliminar del diccionario
+	nodes[type].erase(position)
+	
+	# Recalcular visual de los vecinos
+	for neighbor in neighbors:
+		update_node_visual.emit(neighbor)
 
 func find_neighbors(node:NetworkNode)-> void:
 	var position_center: Vector2i = Vector2i(node.position.x,node.position.y)
