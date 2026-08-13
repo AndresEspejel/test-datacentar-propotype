@@ -40,7 +40,7 @@ func delete_node(node: NetworkNode) -> void:
 		return
 	var line_instance = rendered_nodes[node.position]
 	rendered_nodes.erase(node.position)
-	line_instance.deleted()
+	line_instance.queue_free()
 
 
 

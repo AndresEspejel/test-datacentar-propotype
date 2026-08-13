@@ -16,6 +16,10 @@ func _ready() -> void:
 	pass
 
 func add_node(node:NetworkNode)-> void:
+	if position_is_occupied(node.position):
+		print("Celda ocupada: ", node.position)
+		return
+		
 	nodes[node.network_type][node.position] = node
 	find_neighbors(node)
 	draw_node.emit(node)
@@ -92,6 +96,12 @@ func get_network_nodes(type_network: NetworkTypes.Type, position: Vector2i) -> A
 	search_neighbors(start)
 	return visited_nodes.keys()
 
+func position_is_occupied(position: Vector2i) -> bool:
+	for type in nodes:
+		if nodes[type].has(position):
+			return true
+	
+	return false
 
 func search_neighbors(node: NetworkNode):
 	visited_nodes[node] = true

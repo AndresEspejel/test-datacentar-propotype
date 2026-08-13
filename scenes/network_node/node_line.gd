@@ -50,6 +50,3 @@ func update_visual(node: NetworkNode):
 		animated_sprite.play("default_r")
 	else:
 		animated_sprite.play("default_l")
-
-func deleted():
-	queue_free()

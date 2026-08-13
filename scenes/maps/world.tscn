@@ -52,20 +52,21 @@ air_line = ExtResource("5_av32x")
 [node name="TileMap" type="TileMapLayer" parent="NetworkRenderer" unique_id=1568470463]
 tile_set = SubResource("TileSet_5fqxl")
 
-[node name="Buildings" type="Node2D" parent="." unique_id=241836963]
-
-[node name="PcBasic" parent="Buildings" unique_id=2118404311 instance=ExtResource("2_6w65o")]
-position = Vector2(68, -2)
-
 [node name="NetworkManager" type="Node" parent="." unique_id=1345263885]
 script = ExtResource("2_bxnbg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1129536049]
+visible = false
+
+[node name="HUD" parent="CanvasLayer" unique_id=2034365019 instance=ExtResource("9_s5d3o")]
 
 [node name="BuildManager" type="Node" parent="." unique_id=10963324]
 script = ExtResource("9_dnf87")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1129536049]
+[node name="Buildings" type="Node2D" parent="BuildManager" unique_id=241836963]
 
-[node name="HUD" parent="CanvasLayer" unique_id=2034365019 instance=ExtResource("9_s5d3o")]
+[node name="PcBasic" parent="BuildManager/Buildings" unique_id=2118404311 instance=ExtResource("2_6w65o")]
+position = Vector2(180, 57)
 
 [connection signal="deleted_node_visual" from="NetworkManager" to="NetworkRenderer" method="_on_network_manager_deleted_node_visual"]
 [connection signal="draw_node" from="NetworkManager" to="NetworkRenderer" method="_on_network_manager_draw_node"]
