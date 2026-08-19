@@ -1,0 +1,16 @@
+[remap]
+
+importer="fwdab.px.import.texture2d"
+type="Texture2D"
+uid="uid://dft885kahp5lt"
+path="res://.godot/imported/air_conditioning.px-1a013a43249bce1eb3d45ce68603f2d0.res"
+
+[deps]
+
+source_file="res://assets/air_conditioning.px"
+dest_files=["res://.godot/imported/air_conditioning.px-1a013a43249bce1eb3d45ce68603f2d0.res"]
+
+[params]
+
+frame_index=0
+composite_visible_layers=true

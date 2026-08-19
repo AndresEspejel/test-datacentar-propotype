@@ -1,6 +1,6 @@
 [remap]
 
-importer="fwdab.px.import.texture2d"
+importer="fwdab.px.import.spritesheet"
 type="Texture2D"
 uid="uid://chvpy7ubvh85x"
 path="res://.godot/imported/UntitledArtwork1.px-f264c5493e5b3b7651e3fc6ad11b53c8.res"
@@ -12,5 +12,6 @@ dest_files=["res://.godot/imported/UntitledArtwork1.px-f264c5493e5b3b7651e3fc6ad
 
 [params]
 
-frame_index=0
+animation_tag=0
+sheet_columns=1
 composite_visible_layers=true

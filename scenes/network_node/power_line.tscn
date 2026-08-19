@@ -1,17 +1,52 @@
-[gd_scene format=3 uid="uid://duoim7k686fuk"]
+[gd_scene format=3 uid="uid://ddrxmra1kanug"]
 
-[ext_resource type="Texture2D" uid="uid://ctkv0ecy50ffp" path="res://assets/Electronica.px" id="1_ossbf"]
+[ext_resource type="PackedScene" uid="uid://clned6d07uq73" path="res://scenes/network_node/node_line.tscn" id="1_q5wrw"]
+[ext_resource type="Texture2D" uid="uid://b8if54ybx86mr" path="res://assets/Power_node.px" id="2_ba0om"]
+[ext_resource type="Script" uid="uid://x4am0pik64ju" path="res://scenes/network_node/power_line.gd" id="2_qj4mb"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ixb01"]
-atlas = ExtResource("1_ossbf")
-region = Rect2(32, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba0om"]
+atlas = ExtResource("2_ba0om")
+region = Rect2(0, 0, 32, 32)
 
-[node name="PowerLine" type="Area2D" unique_id=99371608 groups=["power_line"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj4mb"]
+atlas = ExtResource("2_ba0om")
+region = Rect2(32, 0, 32, 32)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=234988029]
-position = Vector2(0, 8)
-texture = SubResource("AtlasTexture_ixb01")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2ifg"]
+atlas = ExtResource("2_ba0om")
+region = Rect2(0, 32, 32, 32)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1873118672]
-position = Vector2(0, 8)
-polygon = PackedVector2Array(0, -15, -16, -8, 0, 0, 16, -8)
+[sub_resource type="SpriteFrames" id="SpriteFrames_s2ifg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba0om")
+}],
+"loop": 1,
+"name": &"default_l",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj4mb")
+}],
+"loop": 1,
+"name": &"default_r",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2ifg")
+}],
+"loop": 1,
+"name": &"default_x",
+"speed": 5.0
+}]
+
+[node name="PowerLine" unique_id=1951531279 instance=ExtResource("1_q5wrw")]
+script = ExtResource("2_qj4mb")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1539455065]
+sprite_frames = SubResource("SpriteFrames_s2ifg")
+animation = &"default_x"
+autoplay = ""

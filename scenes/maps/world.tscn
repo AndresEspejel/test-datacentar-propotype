@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://clbhd1h7ytam8" path="res://scenes/maps/network_renderer.gd" id="2_55aix"]
 [ext_resource type="Script" uid="uid://dwtf1278tbvg4" path="res://scripts/network/network_manager.gd" id="2_bxnbg"]
 [ext_resource type="Texture2D" uid="uid://ctkv0ecy50ffp" path="res://assets/Electronica.px" id="3_lvkeh"]
-[ext_resource type="PackedScene" uid="uid://duoim7k686fuk" path="res://scenes/network_node/power_line.tscn" id="4_av32x"]
-[ext_resource type="PackedScene" uid="uid://do7fblqmetlc" path="res://scenes/network_node/ethernet_line.tscn" id="4_pq5yi"]
+[ext_resource type="PackedScene" uid="uid://ddrxmra1kanug" path="res://scenes/network_node/power_line.tscn" id="4_av32x"]
+[ext_resource type="PackedScene" uid="uid://doqiysxh2xtrq" path="res://scenes/network_node/ethernet_line.tscn" id="4_pq5yi"]
 [ext_resource type="PackedScene" uid="uid://d0wca4a8nibpd" path="res://scenes/network_node/air_line.tscn" id="5_av32x"]
 [ext_resource type="Script" uid="uid://d2g30w7tqwulx" path="res://scenes/maps/build_manager.gd" id="9_dnf87"]
 [ext_resource type="PackedScene" uid="uid://cib8tqb0gwqtk" path="res://scenes/ui/MainControl/main_control.tscn" id="9_s5d3o"]
@@ -56,7 +56,6 @@ tile_set = SubResource("TileSet_5fqxl")
 script = ExtResource("2_bxnbg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1129536049]
-visible = false
 
 [node name="HUD" parent="CanvasLayer" unique_id=2034365019 instance=ExtResource("9_s5d3o")]
 

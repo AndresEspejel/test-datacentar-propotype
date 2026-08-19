@@ -1,0 +1,17 @@
+[remap]
+
+importer="fwdab.px.import.spritesheet"
+type="Texture2D"
+uid="uid://b0fqk0vanwj3b"
+path="res://.godot/imported/Ethernet_node.px-29493f28b2c74277368e2d2748a48a4a.res"
+
+[deps]
+
+source_file="res://assets/Ethernet_node.px"
+dest_files=["res://.godot/imported/Ethernet_node.px-29493f28b2c74277368e2d2748a48a4a.res"]
+
+[params]
+
+animation_tag=0
+sheet_columns=2
+composite_visible_layers=true
