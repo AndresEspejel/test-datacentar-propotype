@@ -46,11 +46,6 @@ func power_sw():
 		powerOff()
 
 
-func _on_button_pressed() -> void:
-	power_sw()
-	print(is_power_on)
-
-
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("clic_left"):
 		information_control.visible = !information_control.visible

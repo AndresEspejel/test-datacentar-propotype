@@ -43,7 +43,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PowerLine" unique_id=1951531279 instance=ExtResource("1_q5wrw")]
+[node name="PowerLine" unique_id=1951531279 groups=["power_line"] instance=ExtResource("1_q5wrw")]
 script = ExtResource("2_qj4mb")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1539455065]

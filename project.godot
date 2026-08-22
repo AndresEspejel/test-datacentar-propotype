@@ -32,7 +32,6 @@ enabled=PackedStringArray("res://addons/pixquare_godot_importer/plugin.cfg", "re
 [global_group]
 
 power_line=""
-electronic=""
 ethernet_line=""
 
 [input]

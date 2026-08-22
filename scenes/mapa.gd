@@ -7,7 +7,7 @@ extends Node2D
 func _ready():
 	cursor_tile.visible = false
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
 
 		# Revisar si el mouse está sobre un Control, por ejemplo IO
