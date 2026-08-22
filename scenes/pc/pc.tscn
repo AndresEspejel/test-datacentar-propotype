@@ -29,6 +29,6 @@ wait_time = 2.0
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="signal_status_info" from="." to="InformationControl" method="_on_pc_signal_status_info"]
 [connection signal="update_data" from="." to="InformationControl" method="_on_pc_update_data"]
-[connection signal="pressed" from="IO" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="IO" to="." method="_on_io_pressed"]
 [connection signal="timeout" from="LoadingTime" to="." method="_on_loading_time_timeout"]
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]

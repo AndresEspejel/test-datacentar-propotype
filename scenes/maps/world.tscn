@@ -65,7 +65,7 @@ script = ExtResource("9_dnf87")
 [node name="Buildings" type="Node2D" parent="BuildManager" unique_id=241836963]
 
 [node name="PcBasic" parent="BuildManager/Buildings" unique_id=2118404311 instance=ExtResource("2_6w65o")]
-position = Vector2(180, 57)
+position = Vector2(248, 120)
 
 [connection signal="deleted_node_visual" from="NetworkManager" to="NetworkRenderer" method="_on_network_manager_deleted_node_visual"]
 [connection signal="draw_node" from="NetworkManager" to="NetworkRenderer" method="_on_network_manager_draw_node"]

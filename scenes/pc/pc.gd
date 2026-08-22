@@ -52,7 +52,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_action_pressed("clic"):
+	if event.is_action_pressed("clic_left"):
 		information_control.visible = !information_control.visible
 		
 
@@ -103,3 +103,8 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 		is_connect_to_power_supply = true
 	if area.is_in_group("ethernet_line"):
 		is_connect_to_internet = true
+
+
+func _on_io_pressed() -> void:
+	power_sw()
+	print(is_power_on)

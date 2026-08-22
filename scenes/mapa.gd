@@ -7,24 +7,31 @@ extends Node2D
 func _ready():
 	cursor_tile.visible = false
 
-
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
+
+		# Revisar si el mouse está sobre un Control, por ejemplo IO
+		var hovered_control = get_viewport().gui_get_hovered_control()
+		if hovered_control != null:
+			print("Clic en UI: ", hovered_control.name)
+			return
+
 		var mouse_pos = get_global_mouse_position()
 		var celda = piso.local_to_map(piso.to_local(mouse_pos))
 
 		if piso.get_cell_source_id(celda) != -1:
 			print("Tile:", celda)
+
 			if event.is_action_pressed("clic_left"):
 				build_manager.build(celda)
-				
-			if event.is_action_pressed("clic_right"):
+
+			elif event.is_action_pressed("clic_right"):
 				print("Borrar nodo")
 				build_manager.delete_node(celda)
-				
-			if event.is_action_pressed("clic_middle"):
-				print("Mover camara")
 
+			elif event.is_action_pressed("clic_middle"):
+				print("Mover camara")
+				
 func _process(_delta):
 	var mouse = get_global_mouse_position()
 	

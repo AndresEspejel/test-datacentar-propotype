@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+mouse_filter = 2
 script = ExtResource("1_bxdt4")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1273448583]
@@ -21,6 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_stretch_ratio = 0.0
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -44,6 +46,11 @@ text = "POWER
 layout_mode = 2
 text = "Ethernet"
 
+[node name="DeletedNode" type="Button" parent="MarginContainer/BoxContainerNode" unique_id=363651515]
+layout_mode = 2
+text = "Delete"
+
 [connection signal="pressed" from="MarginContainer/BoxContainerNode/AirNode" to="." method="_on_air_node_pressed"]
 [connection signal="pressed" from="MarginContainer/BoxContainerNode/PowerNode" to="." method="_on_power_node_pressed"]
 [connection signal="pressed" from="MarginContainer/BoxContainerNode/EthernetNode" to="." method="_on_ethernet_node_pressed"]
+[connection signal="pressed" from="MarginContainer/BoxContainerNode/DeletedNode" to="." method="_on_ethernet_node_pressed"]
