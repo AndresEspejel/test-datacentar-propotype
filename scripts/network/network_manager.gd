@@ -103,6 +103,13 @@ func position_is_occupied(position: Vector2i) -> bool:
 	
 	return false
 
+func get_node_in(position: Vector2i) -> NetworkNode:
+	for type in nodes:
+		if nodes[type].has(position):
+			return nodes[type][position]
+	
+	return null
+
 func search_neighbors(node: NetworkNode):
 	visited_nodes[node] = true
 	for neighbor in node.neighbors:

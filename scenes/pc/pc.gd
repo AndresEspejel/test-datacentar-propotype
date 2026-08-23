@@ -99,7 +99,13 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ethernet_line"):
 		is_connect_to_internet = true
 
-
 func _on_io_pressed() -> void:
 	power_sw()
 	print(is_power_on)
+	
+
+func _on_detection_area_area_exited(area: Area2D) -> void:
+	if area.is_in_group("power_line"):
+		is_connect_to_power_supply = false
+	if area.is_in_group("ethernet_line"):
+		is_connect_to_internet = false

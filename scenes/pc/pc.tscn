@@ -32,3 +32,4 @@ wait_time = 2.0
 [connection signal="pressed" from="IO" to="." method="_on_io_pressed"]
 [connection signal="timeout" from="LoadingTime" to="." method="_on_loading_time_timeout"]
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]

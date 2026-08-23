@@ -53,4 +53,4 @@ text = "Delete"
 [connection signal="pressed" from="MarginContainer/BoxContainerNode/AirNode" to="." method="_on_air_node_pressed"]
 [connection signal="pressed" from="MarginContainer/BoxContainerNode/PowerNode" to="." method="_on_power_node_pressed"]
 [connection signal="pressed" from="MarginContainer/BoxContainerNode/EthernetNode" to="." method="_on_ethernet_node_pressed"]
-[connection signal="pressed" from="MarginContainer/BoxContainerNode/DeletedNode" to="." method="_on_ethernet_node_pressed"]
+[connection signal="pressed" from="MarginContainer/BoxContainerNode/DeletedNode" to="." method="_on_deleted_node_pressed"]

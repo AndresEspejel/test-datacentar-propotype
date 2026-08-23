@@ -18,19 +18,22 @@ func _unhandled_input(event):
 
 		var mouse_pos = get_global_mouse_position()
 		var celda = piso.local_to_map(piso.to_local(mouse_pos))
-
 		if piso.get_cell_source_id(celda) != -1:
 			print("Tile:", celda)
-
+			
 			if event.is_action_pressed("clic_left"):
-				build_manager.build(celda)
-
+				if build_manager.mode_add:
+					build_manager.build(celda)
+				elif build_manager.mode_deleted:
+					build_manager.delete_item(celda)
+				elif build_manager.mode_move:
+					print("MOVER CAMARA")
 			elif event.is_action_pressed("clic_right"):
-				print("Borrar nodo")
-				build_manager.delete_node(celda)
+				print("Borrar Elemento")
+				build_manager.delete_item(celda)
 
-			elif event.is_action_pressed("clic_middle"):
-				print("Mover camara")
+			#elif event.is_action_pressed("clic_middle"):
+				#print("Mover camara")
 				
 func _process(_delta):
 	var mouse = get_global_mouse_position()
