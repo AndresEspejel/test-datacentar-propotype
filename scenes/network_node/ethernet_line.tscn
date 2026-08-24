@@ -46,8 +46,8 @@ animations = [{
 [node name="EthernetLine" unique_id=1951531279 groups=["ethernet_line"] instance=ExtResource("1_hn2ex")]
 script = ExtResource("2_6o8hf")
 
-[node name="AnimatedSprite2D" parent="." index="0" unique_id=1539455065]
-position = Vector2(0, 8)
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=1539455065]
+position = Vector2(2, 6)
 sprite_frames = SubResource("SpriteFrames_hn2ex")
 animation = &"default_l"
 autoplay = ""

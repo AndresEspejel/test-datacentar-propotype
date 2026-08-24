@@ -15,16 +15,43 @@ var nodes: Dictionary = {
 func _ready() -> void:
 	pass
 
-func add_node(node:NetworkNode)-> void:
-	if position_is_occupied(node.position):
-		print("Celda ocupada: ", node.position)
-		return
-		
+func add_node(node: NetworkNode) -> void:
+
+	# Si queremos colocar AIR
+	if node.network_type == NetworkTypes.Type.AIR:
+
+		# AIR no puede convivir con nada
+		if position_is_occupied(node.position):
+			print("Celda ocupada: ", node.position)
+			return
+
+	else:
+		# POWER y ETHERNET pueden convivir,
+		# pero no con AIR
+		if position_is_occupied_by_type(
+			node.position,
+			NetworkTypes.Type.AIR
+		):
+			print("No se puede colocar cable sobre AIR")
+			return
+
+		# Evitar duplicar el mismo tipo
+		if position_is_occupied_by_type(
+			node.position,
+			node.network_type
+		):
+			print("Ya existe este tipo de cable")
+			return
+
 	nodes[node.network_type][node.position] = node
+
 	find_neighbors(node)
+
 	draw_node.emit(node)
+
 	for neighbor in node.neighbors:
 		update_node_visual.emit(neighbor)
+
 
 func remove_node(position: Vector2i, type: NetworkTypes.Type)->void:
 	if not nodes[type].has(position):
@@ -102,12 +129,20 @@ func position_is_occupied(position: Vector2i) -> bool:
 			return true
 	
 	return false
+func position_is_occupied_by_type(position: Vector2i,type: NetworkTypes.Type) -> bool:
+	return nodes[type].has(position)
 
-func get_node_in(position: Vector2i) -> NetworkNode:
+
+func get_nodes_in(position: Vector2i) -> Array[NetworkNode]:
+	var result: Array[NetworkNode] = []
 	for type in nodes:
 		if nodes[type].has(position):
-			return nodes[type][position]
-	
+			result.append(nodes[type][position])
+	return result
+
+func get_node_in(position: Vector2i,type: NetworkTypes.Type) -> NetworkNode:
+	if nodes[type].has(position):
+		return nodes[type][position]
 	return null
 
 func search_neighbors(node: NetworkNode):

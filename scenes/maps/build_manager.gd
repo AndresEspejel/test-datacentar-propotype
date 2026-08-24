@@ -22,13 +22,18 @@ func build(position: Vector2i) -> void:
 	node.network_type = selected_type
 	network_manager.add_node(node)
 
+# Borra solamente el tipo actualmente seleccionado
 func delete_node(position: Vector2i) -> void:
 	network_manager.remove_node(position, selected_type)
 
+# Borra TODOS los elementos de la celda
 func delete_item(position: Vector2i) -> void:
-	if network_manager.position_is_occupied(position):
-		var node_deleted = network_manager.get_node_in(position)
-		network_manager.remove_node(node_deleted.position, node_deleted.network_type)
+	var nodes_to_delete = network_manager.get_nodes_in(position)
+	for node in nodes_to_delete:
+		network_manager.remove_node(
+			node.position,
+			node.network_type
+		)
 
 func _on_hud_node_deleted_selected() -> void:
 	if mode_deleted == false:

@@ -9,32 +9,38 @@ func _ready():
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
-
-		# Revisar si el mouse está sobre un Control, por ejemplo IO
+		# No detectar clics sobre la UI
 		var hovered_control = get_viewport().gui_get_hovered_control()
 		if hovered_control != null:
 			print("Clic en UI: ", hovered_control.name)
 			return
 
 		var mouse_pos = get_global_mouse_position()
-		var celda = piso.local_to_map(piso.to_local(mouse_pos))
-		if piso.get_cell_source_id(celda) != -1:
-			print("Tile:", celda)
-			
-			if event.is_action_pressed("clic_left"):
-				if build_manager.mode_add:
-					build_manager.build(celda)
-				elif build_manager.mode_deleted:
-					build_manager.delete_item(celda)
-				elif build_manager.mode_move:
-					print("MOVER CAMARA")
-			elif event.is_action_pressed("clic_right"):
-				print("Borrar Elemento")
+		var celda = piso.local_to_map(
+			piso.to_local(mouse_pos)
+		)
+		if piso.get_cell_source_id(celda) == -1:
+			return
+		print("Tile: ", celda)
+		# CLIC IZQUIERDO
+		if event.is_action_pressed("clic_left"):
+
+			if build_manager.mode_add:
+				build_manager.build(celda)
+
+			elif build_manager.mode_deleted:
 				build_manager.delete_item(celda)
 
+			elif build_manager.mode_move:
+				print("MOVER CAMARA")
+
+		# CLIC DERECHO
+		elif event.is_action_pressed("clic_right"):
+			print("Borrar tipo seleccionado")
+			build_manager.delete_node(celda)
 			#elif event.is_action_pressed("clic_middle"):
 				#print("Mover camara")
-				
+
 func _process(_delta):
 	var mouse = get_global_mouse_position()
 	

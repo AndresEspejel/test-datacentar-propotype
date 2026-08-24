@@ -4,7 +4,11 @@ extends Node2D
 @export var ethernet_line: PackedScene
 @export var air_line: PackedScene
 
-var rendered_nodes: Dictionary = {}
+var rendered_nodes = {
+	NetworkTypes.Type.AIR: {},
+	NetworkTypes.Type.POWER: {},
+	NetworkTypes.Type.ETHERNET: {}
+}
 
 
 func draw_node(node: NetworkNode):
@@ -23,7 +27,7 @@ func draw_node(node: NetworkNode):
 	line_instance.setup(node)
 	add_child(line_instance)
 	line_instance.global_position = tile_map_air.map_to_local(node.position)
-	rendered_nodes[node.position] = line_instance
+	rendered_nodes[node.network_type][node.position] = line_instance
 	line_instance.update_visual(node)
 
 func _on_network_manager_draw_node(node: NetworkNode) -> void:
@@ -31,17 +35,18 @@ func _on_network_manager_draw_node(node: NetworkNode) -> void:
 
 
 func _on_network_manager_update_node_visual(node: NetworkNode) -> void:
-	if rendered_nodes.has(node.position):
-		var line_instance = rendered_nodes[node.position]
+	if rendered_nodes[node.network_type].has(node.position):
+		var line_instance = rendered_nodes[node.network_type][node.position]
 		line_instance.update_visual(node)
 
 func delete_node(node: NetworkNode) -> void:
-	if not rendered_nodes.has(node.position):
+	var type = node.network_type
+	if not rendered_nodes[type].has(node.position):
 		return
-	var line_instance = rendered_nodes[node.position]
-	rendered_nodes.erase(node.position)
-	line_instance.queue_free()
 
+	var line_instance = rendered_nodes[type][node.position]
+	rendered_nodes[type].erase(node.position)
+	line_instance.queue_free()
 
 
 func _on_network_manager_deleted_node_visual(node: NetworkNode) -> void:

@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://clned6d07uq73"]
 
 [ext_resource type="Script" uid="uid://dhvwaxps5t3ss" path="res://scenes/network_node/node_line.gd" id="1_et4s3"]
+[ext_resource type="Texture2D" uid="uid://dft885kahp5lt" path="res://assets/air_conditioning.px" id="2_et4s3"]
 
 [node name="NodeLine" type="Area2D" unique_id=1951531279]
 script = ExtResource("1_et4s3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=576697675]
+visible = false
+position = Vector2(0, 8)
+texture = ExtResource("2_et4s3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1539455065]
 autoplay = "idle_L"
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="." unique_id=1418290299]
-polygon = PackedVector2Array(-42, 0, 0, -26, 45, 0, 0, 24)
+scale = Vector2(0.5395115, 0.5125)
+polygon = PackedVector2Array(-29.656458, 0, 0, -15.609756, 29.656458, 0, 0, 15.609756)
