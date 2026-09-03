@@ -46,7 +46,7 @@ animations = [{
 [node name="PowerLine" unique_id=1951531279 groups=["power_line"] instance=ExtResource("1_q5wrw")]
 script = ExtResource("2_qj4mb")
 
-[node name="AnimatedSprite2D" parent="." index="0" unique_id=1539455065]
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=1539455065]
 position = Vector2(0, 8)
 sprite_frames = SubResource("SpriteFrames_s2ifg")
 animation = &"default_x"
