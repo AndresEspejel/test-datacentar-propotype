@@ -1,0 +1,16 @@
+[remap]
+
+importer="fwdab.px.import.texture2d"
+type="Texture2D"
+uid="uid://7n8bwtia2lyy"
+path="res://.godot/imported/power_generator.px-5fc53e98feaa383b00aade2754c02978.res"
+
+[deps]
+
+source_file="res://assets/power_generator.px"
+dest_files=["res://.godot/imported/power_generator.px-5fc53e98feaa383b00aade2754c02978.res"]
+
+[params]
+
+frame_index=0
+composite_visible_layers=true
