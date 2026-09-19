@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bk48ixpe22k6e"]
+
+[ext_resource type="PackedScene" uid="uid://ber1bw3dpbbbe" path="res://scenes/power_generators/power_generator.tscn" id="1_8vcaj"]
+[ext_resource type="Texture2D" uid="uid://7n8bwtia2lyy" path="res://assets/power_generator.px" id="2_f8mbc"]
+[ext_resource type="Script" uid="uid://n364ohnouce2" path="res://scenes/power_generators/power_generator_basic.gd" id="2_hi6me"]
+
+[node name="PowerGeneratorBasic" unique_id=355358756 instance=ExtResource("1_8vcaj")]
+script = ExtResource("2_hi6me")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1600250391]
+texture = ExtResource("2_f8mbc")
+
+[node name="PowerSwitch" parent="." index="1" unique_id=323120942]
+offset_left = -12.0
+offset_top = 17.0
+offset_right = 32.0
+offset_bottom = 41.0
+
+[node name="InformationPowerControl" parent="." index="2" unique_id=1063090022]
+visible = false
+
+[node name="CollisionPolygon2D" parent="DetectionArea" parent_id_path=PackedInt32Array(1228410877) index="0" unique_id=1931257556]
+polygon = PackedVector2Array(-16, -9, -16, 8, 0, 16, 16, 8, 16, -9, 0, -16)

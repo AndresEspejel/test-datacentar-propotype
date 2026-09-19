@@ -1,3 +1,32 @@
 [gd_scene format=3 uid="uid://ber1bw3dpbbbe"]
 
-[node name="PowerGenerator" type="Node2D" unique_id=43645143]
+[ext_resource type="Script" uid="uid://bhetajivkeobo" path="res://scenes/power_generators/power_generator.gd" id="1_c28r1"]
+[ext_resource type="PackedScene" uid="uid://cadkt5atlagvd" path="res://scenes/ui/info/information_power_control.tscn" id="1_mua6u"]
+
+[node name="PowerGenerator" type="Node2D" unique_id=355358756]
+script = ExtResource("1_c28r1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1600250391]
+
+[node name="PowerSwitch" type="CheckButton" parent="." unique_id=323120942]
+offset_right = 44.0
+offset_bottom = 24.0
+scale = Vector2(0.53, 0.53)
+
+[node name="InformationPowerControl" parent="." unique_id=1063090022 instance=ExtResource("1_mua6u")]
+visible = false
+offset_left = 20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = -20.0
+
+[node name="TimerConsumption" type="Timer" parent="." unique_id=2040146513]
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1228410877]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectionArea" unique_id=1931257556]
+
+[connection signal="signal_update_status" from="." to="InformationPowerControl" method="_on_power_generator_signal_update_status"]
+[connection signal="toggled" from="PowerSwitch" to="." method="_on_power_switch_toggled"]
+[connection signal="timeout" from="TimerConsumption" to="." method="_on_timer_consumption_timeout"]
+[connection signal="input_event" from="DetectionArea" to="." method="_on_detection_area_input_event"]
