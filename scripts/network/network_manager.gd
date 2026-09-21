@@ -1,4 +1,3 @@
-class_name NetworkManager
 extends Node
 
 signal draw_node(node: NetworkNode)
@@ -11,20 +10,38 @@ var nodes: Dictionary = {
 	NetworkTypes.Type.AIR:{},
 }
 
+#Gestion de dispositivos
+var network_sources: Array[NetworkSource] = []
+var network_consumers: Array[NetworkConsumer] = []
+
+#Gestion de nodos
+var visited_nodes: Dictionary = {}
 
 func _ready() -> void:
 	pass
+	
+func register_source(source: NetworkSource) -> void:
+	if source not in network_sources:
+		network_sources.append(source)
+
+func unregister_source(source: NetworkSource) -> void:
+	network_sources.erase(source)
+
+func register_consumer(consumer: NetworkConsumer) -> void:
+	if consumer not in network_consumers:
+		network_consumers.append(consumer)
+
+func unregister_consumer(consumer: NetworkConsumer) -> void:
+	network_consumers.erase(consumer)
+
 
 func add_node(node: NetworkNode) -> void:
-
 	# Si queremos colocar AIR
 	if node.network_type == NetworkTypes.Type.AIR:
-
 		# AIR no puede convivir con nada
 		if position_is_occupied(node.position):
 			print("Celda ocupada: ", node.position)
 			return
-
 	else:
 		# POWER y ETHERNET pueden convivir,
 		# pero no con AIR
@@ -34,7 +51,6 @@ func add_node(node: NetworkNode) -> void:
 		):
 			print("No se puede colocar cable sobre AIR")
 			return
-
 		# Evitar duplicar el mismo tipo
 		if position_is_occupied_by_type(
 			node.position,
@@ -44,37 +60,38 @@ func add_node(node: NetworkNode) -> void:
 			return
 
 	nodes[node.network_type][node.position] = node
-
 	find_neighbors(node)
-
 	draw_node.emit(node)
 
 	for neighbor in node.neighbors:
 		update_node_visual.emit(neighbor)
-
+	
+	if node.network_type == NetworkTypes.Type.POWER:
+		recalculate_power()
 
 func remove_node(position: Vector2i, type: NetworkTypes.Type)->void:
 	if not nodes[type].has(position):
 		return
-	
+
 	var node_to_delete: NetworkNode = nodes[type][position]
-	
 	# Guardamos los vecinos antes de desconectar
 	var neighbors := node_to_delete.neighbors.duplicate()
-	
 	# Desconectar
 	for neighbor in neighbors:
 		neighbor.disconnect_node(node_to_delete)
 	
 	# Eliminar visual
 	deleted_node_visual.emit(node_to_delete)
-	
 	# Eliminar del diccionario
 	nodes[type].erase(position)
 	
 	# Recalcular visual de los vecinos
 	for neighbor in neighbors:
 		update_node_visual.emit(neighbor)
+	
+	if type == NetworkTypes.Type.POWER:
+		recalculate_power()
+
 
 func find_neighbors(node:NetworkNode)-> void:
 	var position_center: Vector2i = Vector2i(node.position.x,node.position.y)
@@ -109,8 +126,57 @@ func find_neighbors(node:NetworkNode)-> void:
 	else:
 		node.delete_neighbors_in(position_left)
 
+func recalculate_power() -> void:
+	var powered_positions: Dictionary = {}
+	# 1. Recorrer fuentes encendidas
+	for source in network_sources:
+		
+		if not is_instance_valid(source):
+			continue
+		if not source.is_active:
+			continue
+			
+		var power_nodes := get_connected_power_nodes(source.connection_position)
+		
+		for node in power_nodes:
+			powered_positions[node.position] = true
+	# 2. Actualizar consumidores
+	for consumer in network_consumers:
+		if not is_instance_valid(consumer):
+			continue
+			
+		var consumer_powered := false
+		var consumer_nodes := get_connected_power_nodes(consumer.connection_position)
+		
+		for node in consumer_nodes:
+			if powered_positions.has(node.position):
+				consumer_powered = true
+				break
+		consumer.set_power_state(consumer_powered)
 
-var visited_nodes: Dictionary = {}
+func get_connected_power_nodes(connection_position: Vector2i) -> Array[NetworkNode]:
+	var result: Array[NetworkNode] = []
+	var positions: Array[Vector2i] = [
+		connection_position,
+		connection_position + Vector2i.UP,
+		connection_position + Vector2i.RIGHT,
+		connection_position + Vector2i.DOWN,
+		connection_position + Vector2i.LEFT
+	]
+
+	for position in positions:
+		if nodes[NetworkTypes.Type.POWER].has(position):
+			var network_nodes := get_network_nodes(
+				NetworkTypes.Type.POWER,
+				position
+			)
+			for node in network_nodes:
+				if node not in result:
+					result.append(node)
+			break
+		
+	return result
+
 
 func get_network_nodes(type_network: NetworkTypes.Type, position: Vector2i) -> Array[NetworkNode]:
 	visited_nodes.clear()

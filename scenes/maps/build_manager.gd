@@ -6,7 +6,7 @@ var mode_move = true
 var mode_deleted = false
 var mode_add = false
 
-@onready var network_manager: NetworkManager = $"../NetworkManager"
+@onready var network_manager: Node = $"../NetworkManager"
 
 
 func _on_hud_node_type_selected(type_node: NetworkTypes.Type) -> void:

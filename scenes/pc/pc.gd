@@ -1,6 +1,5 @@
 class_name Pc
-
-extends RigidBody2D
+extends NetworkConsumer
 
 @onready var information_control: Control = $InformationControl
 @onready var loading_time: Timer = $LoadingTime
@@ -8,7 +7,6 @@ extends RigidBody2D
 
 var is_power_on:bool = false
 var is_connect_to_internet:bool = false
-var is_connect_to_power_supply: bool = false
 
 signal update_data (cpu_ghz,temperature, watts)
 signal signal_status_info(power:bool,status:String)
@@ -38,6 +36,9 @@ var watts_consumption: float = 0.0:
 		watts_consumption = value
 		update()
 
+func _ready() -> void:
+	network_type = NetworkTypes.Type.POWER
+	NetworkManagerGlobal.register_consumer(self)
 
 func power_sw():
 	if not is_power_on:
@@ -49,10 +50,20 @@ func power_sw():
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("clic_left"):
 		information_control.visible = !information_control.visible
-		
+
+
+func set_power_state(powered: bool) -> void:
+	if has_power == powered:
+		return
+	has_power = powered
+	if has_power:
+		print("PC: Energía recibida")
+	else:
+		print("PC: Sin energía")
 
 func powerOn():
-	if not is_connect_to_power_supply:
+
+	if not has_power:
 		status = "power is out"
 		update_status()
 		return 
@@ -93,19 +104,19 @@ func _on_loading_time_timeout() -> void:
 	running()
 
 
-func _on_detection_area_area_entered(area: Area2D) -> void:
-	if area.is_in_group("power_line"):
-		is_connect_to_power_supply = true
-	if area.is_in_group("ethernet_line"):
-		is_connect_to_internet = true
 
 func _on_io_pressed() -> void:
 	power_sw()
 	print(is_power_on)
 	
-
-func _on_detection_area_area_exited(area: Area2D) -> void:
-	if area.is_in_group("power_line"):
-		is_connect_to_power_supply = false
-	if area.is_in_group("ethernet_line"):
-		is_connect_to_internet = false
+#func _on_detection_area_area_entered(area: Area2D) -> void:
+	#if area.is_in_group("power_line"):
+		#has_power = true
+	#if area.is_in_group("ethernet_line"):
+		#is_connect_to_internet = true
+#
+#func _on_detection_area_area_exited(area: Area2D) -> void:
+	#if area.is_in_group("power_line"):
+		#has_power  = false
+	#if area.is_in_group("ethernet_line"):
+		#is_connect_to_internet = false

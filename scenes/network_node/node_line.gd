@@ -29,13 +29,13 @@ func update_visual(node: NetworkNode):
 			Vector2i(1, 0):
 				right = true
 
-	print(
-		"Nodo:", node.position,
-		" U:", up,
-		" D:", down,
-		" L:", left,
-		" R:", right
-	)
+	#print(
+		#"Nodo:", node.position,
+		#" U:", up,
+		#" D:", down,
+		#" L:", left,
+		#" R:", right
+	#)
 
 	# Elegir sprite
 	if (up and right) or (right and down) or (down and left) or (left and up):

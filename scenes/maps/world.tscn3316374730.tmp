@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d0wca4a8nibpd" path="res://scenes/network_node/air_line.tscn" id="5_av32x"]
 [ext_resource type="Script" uid="uid://d2g30w7tqwulx" path="res://scenes/maps/build_manager.gd" id="9_dnf87"]
 [ext_resource type="PackedScene" uid="uid://cib8tqb0gwqtk" path="res://scenes/ui/MainControl/main_control.tscn" id="9_s5d3o"]
+[ext_resource type="Script" uid="uid://dwfcoqiddvorm" path="res://scenes/maps/network_device.gd" id="10_x3aai"]
 [ext_resource type="PackedScene" uid="uid://bk48ixpe22k6e" path="res://scenes/power_generators/power_generator_basic.tscn" id="11_tlanf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_74gp3"]
@@ -64,10 +65,10 @@ script = ExtResource("2_bxnbg")
 script = ExtResource("9_dnf87")
 
 [node name="NetworkDevice" type="Node2D" parent="BuildManager" unique_id=241836963]
+script = ExtResource("10_x3aai")
 
 [node name="PcBasic" parent="BuildManager/NetworkDevice" unique_id=2118404311 instance=ExtResource("2_6w65o")]
-position = Vector2(204, 144)
-connection_position = Vector2i(10, 0)
+position = Vector2(289, 104)
 
 [node name="PowerGeneratorBasic" parent="BuildManager/NetworkDevice" unique_id=355358756 instance=ExtResource("11_tlanf")]
 position = Vector2(128, 103)
