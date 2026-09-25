@@ -10,7 +10,7 @@ script = ExtResource("1_vayil")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1976985814]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=345068914]
+[node name="CollisionPolygon2DInfo" type="CollisionPolygon2D" parent="." unique_id=345068914]
 
 [node name="IO" type="Button" parent="." unique_id=733915151]
 offset_right = 8.0
@@ -22,9 +22,9 @@ z_index = -1
 [node name="LoadingTime" type="Timer" parent="." unique_id=1476213318]
 wait_time = 2.0
 
-[node name="DetectionArea" type="Area2D" parent="." unique_id=1106363605 groups=["electronic"]]
+[node name="DetectionAreaAir" type="Area2D" parent="." unique_id=1106363605 groups=["electronic"]]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectionArea" unique_id=275089077]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectionAreaAir" unique_id=275089077]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="signal_status_info" from="." to="InformationControl" method="_on_pc_signal_status_info"]

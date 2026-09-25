@@ -67,9 +67,8 @@ animation = &"power"
 autoplay = "power"
 frame_progress = 0.5748999
 
-[node name="CollisionPolygon2D" parent="." index="1" unique_id=345068914]
-position = Vector2(-2, -2)
-polygon = PackedVector2Array(-9, -4, 7, -12, 16, -9, 16, 9, 0, 16, -9, 12)
+[node name="CollisionPolygon2DInfo" parent="." index="1" unique_id=345068914]
+polygon = PackedVector2Array(-4, -10, 5, -14, 13, -10, 13, 7, -2, 14, -12, 10, -12, -6)
 
 [node name="IO" parent="." index="2" unique_id=733915151]
 offset_left = -3.0
@@ -83,6 +82,3 @@ text = "IO"
 [node name="InformationControl" parent="." index="3" unique_id=46941271]
 visible = false
 z_index = 1
-
-[node name="CollisionPolygon2D" parent="DetectionArea" parent_id_path=PackedInt32Array(1106363605) index="0" unique_id=275089077]
-polygon = PackedVector2Array(-32, 1, -32, 16, -16, 24, 16, 24, 32, 16, 32, 1, 16, -7, -16, -7)

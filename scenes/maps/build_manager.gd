@@ -6,8 +6,6 @@ var mode_move = true
 var mode_deleted = false
 var mode_add = false
 
-@onready var network_manager: Node = $"../NetworkManager"
-
 
 func _on_hud_node_type_selected(type_node: NetworkTypes.Type) -> void:
 	print("MODO: agregar cables")
@@ -20,17 +18,17 @@ func build(position: Vector2i) -> void:
 	var node = NetworkNode.new()
 	node.position = position
 	node.network_type = selected_type
-	network_manager.add_node(node)
+	NetworkManagerGlobal.add_node(node)
 
 # Borra solamente el tipo actualmente seleccionado
 func delete_node(position: Vector2i) -> void:
-	network_manager.remove_node(position, selected_type)
+	NetworkManagerGlobal.remove_node(position, selected_type)
 
 # Borra TODOS los elementos de la celda
 func delete_item(position: Vector2i) -> void:
-	var nodes_to_delete = network_manager.get_nodes_in(position)
+	var nodes_to_delete = NetworkManagerGlobal.get_nodes_in(position)
 	for node in nodes_to_delete:
-		network_manager.remove_node(
+		NetworkManagerGlobal.remove_node(
 			node.position,
 			node.network_type
 		)

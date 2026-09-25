@@ -3,6 +3,7 @@ extends NetworkConsumer
 
 @onready var information_control: Control = $InformationControl
 @onready var loading_time: Timer = $LoadingTime
+@onready var tile_map: TileMapLayer = $"../../../NetworkRenderer/TileMap"
 
 
 var is_power_on:bool = false
@@ -38,9 +39,13 @@ var watts_consumption: float = 0.0:
 
 func _ready() -> void:
 	network_type = NetworkTypes.Type.POWER
+	var coordenada: Vector2i = tile_map.local_to_map(
+		tile_map.to_local(global_position)
+	)
+	connection_position = coordenada
 	NetworkManagerGlobal.register_consumer(self)
 
-func power_sw():
+func power_sw():	
 	if not is_power_on:
 		powerOn()
 	else:
@@ -57,17 +62,17 @@ func set_power_state(powered: bool) -> void:
 		return
 	has_power = powered
 	if has_power:
-		print("PC: Energía recibida")
+		print("PC: "+str(name)+": Energía recibida")
 	else:
-		print("PC: Sin energía")
+		powerOff()
+		print("PC: "+str(name)+": Sin energía")
 
 func powerOn():
-
 	if not has_power:
 		status = "power is out"
 		update_status()
 		return 
-	
+		
 	status = "Loading"
 	update_status()
 	await get_tree().create_timer(3.0).timeout
@@ -88,7 +93,6 @@ func powerOff():
 	status = "OFF"
 	update_status()
 
-
 func  update_status():
 	signal_status_info.emit(is_power_on,status)
 
@@ -99,24 +103,10 @@ func running():
 	cpu_used = randi_range(1, 5)
 	temperature = randi_range(30, 35)
 
-
 func _on_loading_time_timeout() -> void:
 	running()
 
 
-
 func _on_io_pressed() -> void:
 	power_sw()
-	print(is_power_on)
 	
-#func _on_detection_area_area_entered(area: Area2D) -> void:
-	#if area.is_in_group("power_line"):
-		#has_power = true
-	#if area.is_in_group("ethernet_line"):
-		#is_connect_to_internet = true
-#
-#func _on_detection_area_area_exited(area: Area2D) -> void:
-	#if area.is_in_group("power_line"):
-		#has_power  = false
-	#if area.is_in_group("ethernet_line"):
-		#is_connect_to_internet = false

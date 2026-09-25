@@ -27,7 +27,6 @@ func _on_pc_update_data(cpu_ghz: float,cpu_used:float, temperature: float, watts
 
 
 func update_color_status(_power: bool,status:String):
-	print("Reporte estatus")
 	if  status == "Starte":
 		txt_power.modulate = Color.GREEN
 		txt_status.modulate = Color.ORANGE

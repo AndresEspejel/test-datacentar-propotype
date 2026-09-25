@@ -36,22 +36,24 @@ func unregister_consumer(consumer: NetworkConsumer) -> void:
 
 
 func add_node(node: NetworkNode) -> void:
-	# Si queremos colocar AIR
+	print("=== INTENTANDO AGREGAR NODO ===")
+	print("Tipo: ", node.network_type)
+	print("Posición: ", node.position)
+	print("NetworkManager ID: ", get_instance_id())
+	print("POWER: ", nodes[NetworkTypes.Type.POWER].keys())
+
 	if node.network_type == NetworkTypes.Type.AIR:
-		# AIR no puede convivir con nada
 		if position_is_occupied(node.position):
 			print("Celda ocupada: ", node.position)
 			return
 	else:
-		# POWER y ETHERNET pueden convivir,
-		# pero no con AIR
 		if position_is_occupied_by_type(
 			node.position,
 			NetworkTypes.Type.AIR
 		):
 			print("No se puede colocar cable sobre AIR")
 			return
-		# Evitar duplicar el mismo tipo
+
 		if position_is_occupied_by_type(
 			node.position,
 			node.network_type
@@ -60,14 +62,54 @@ func add_node(node: NetworkNode) -> void:
 			return
 
 	nodes[node.network_type][node.position] = node
+
+	print("Nodo agregado correctamente")
+	print("POWER existentes: ", nodes[NetworkTypes.Type.POWER].keys())
+
 	find_neighbors(node)
+
 	draw_node.emit(node)
 
 	for neighbor in node.neighbors:
 		update_node_visual.emit(neighbor)
-	
+		
+	# Recalcular después de modificar la red
 	if node.network_type == NetworkTypes.Type.POWER:
 		recalculate_power()
+		
+#func add_node(node: NetworkNode) -> void:
+	## Si queremos colocar AIR
+	#if node.network_type == NetworkTypes.Type.AIR:
+		## AIR no puede convivir con nada
+		#if position_is_occupied(node.position):
+			#print("Celda ocupada: ", node.position)
+			#return
+	#else:
+		## POWER y ETHERNET pueden convivir,
+		## pero no con AIR
+		#if position_is_occupied_by_type(
+			#node.position,
+			#NetworkTypes.Type.AIR
+		#):
+			#print("No se puede colocar cable sobre AIR")
+			#return
+		## Evitar duplicar el mismo tipo
+		#if position_is_occupied_by_type(
+			#node.position,
+			#node.network_type
+		#):
+			#print("Ya existe este tipo de cable")
+			#return
+#
+	#nodes[node.network_type][node.position] = node
+	#find_neighbors(node)
+	#draw_node.emit(node)
+#
+	#for neighbor in node.neighbors:
+		#update_node_visual.emit(neighbor)
+	#
+	#if node.network_type == NetworkTypes.Type.POWER:
+		#recalculate_power()
 
 func remove_node(position: Vector2i, type: NetworkTypes.Type)->void:
 	if not nodes[type].has(position):
@@ -127,35 +169,76 @@ func find_neighbors(node:NetworkNode)-> void:
 		node.delete_neighbors_in(position_left)
 
 func recalculate_power() -> void:
+	#print("=== RECALCULANDO POWER ===")
+	#print("NetworkManager ID: ", get_instance_id())
+	#print("POWER al recalcular: ", nodes[NetworkTypes.Type.POWER].keys())
+	#print("Fuentes registradas: ", network_sources.size())
 	var powered_positions: Dictionary = {}
+	#print("Posiciones POWER existentes: ",NetworkManagerGlobal.nodes[NetworkTypes.Type.POWER].keys())
+	print("=== RECALCULANDO POWER ===")
+	print("Fuentes registradas: ", network_sources.size())
+
 	# 1. Recorrer fuentes encendidas
 	for source in network_sources:
-		
+
+		print("Fuente encontrada: ", source.name)
+		print("Fuente activa: ", source.is_active)
+		print("Posición de conexión: ", source.connection_position)
+
 		if not is_instance_valid(source):
 			continue
+
 		if not source.is_active:
+			print("Fuente apagada")
 			continue
-			
-		var power_nodes := get_connected_power_nodes(source.connection_position)
-		
+
+		var power_nodes := get_connected_power_nodes(
+			source.connection_position
+		)
+
+		#print("Nodos encontrados: ", power_nodes.size())
+
 		for node in power_nodes:
+
 			powered_positions[node.position] = true
+
+			print("Nodo energizado: ", node.position)
+
+	#print("Diccionario final: ", powered_positions)
+
 	# 2. Actualizar consumidores
 	for consumer in network_consumers:
+
 		if not is_instance_valid(consumer):
 			continue
-			
+
 		var consumer_powered := false
-		var consumer_nodes := get_connected_power_nodes(consumer.connection_position)
-		
+
+		var consumer_nodes := get_connected_power_nodes(
+			consumer.connection_position
+		)
+
 		for node in consumer_nodes:
+
 			if powered_positions.has(node.position):
 				consumer_powered = true
 				break
+		print(
+		"Consumidor: ",
+		consumer.name,
+		" | Posición: ",
+		consumer.connection_position,
+		" | Tiene energía: ",
+		consumer_powered)
+		
 		consumer.set_power_state(consumer_powered)
+		
+func get_connected_power_nodes(
+	connection_position: Vector2i
+) -> Array[NetworkNode]:
 
-func get_connected_power_nodes(connection_position: Vector2i) -> Array[NetworkNode]:
 	var result: Array[NetworkNode] = []
+
 	var positions: Array[Vector2i] = [
 		connection_position,
 		connection_position + Vector2i.UP,
@@ -165,30 +248,52 @@ func get_connected_power_nodes(connection_position: Vector2i) -> Array[NetworkNo
 	]
 
 	for position in positions:
+
 		if nodes[NetworkTypes.Type.POWER].has(position):
-			var network_nodes := get_network_nodes(
+
+			var network_nodes: Array[NetworkNode] = get_network_nodes(
 				NetworkTypes.Type.POWER,
 				position
 			)
-			for node in network_nodes:
-				if node not in result:
-					result.append(node)
+
+			for network_node in network_nodes:
+				if network_node not in result:
+					result.append(network_node)
+
+			# Por ahora mantenemos esta lógica.
+			# Se puede mejorar si hay varias ramas de conexión.
 			break
-		
+
 	return result
+	
 
+func get_network_nodes(
+	type_network: NetworkTypes.Type,
+	position: Vector2i
+) -> Array[NetworkNode]:
 
-func get_network_nodes(type_network: NetworkTypes.Type, position: Vector2i) -> Array[NetworkNode]:
 	visited_nodes.clear()
-	if !nodes.has(type_network):
-		return []
-	var network = nodes[type_network]
-	if !network.has(position):
-		return []
-	var start = network[position]
-	search_neighbors(start)
-	return visited_nodes.keys()
 
+	var result: Array[NetworkNode] = []
+
+	if not nodes.has(type_network):
+		return result
+
+	var network: Dictionary = nodes[type_network]
+
+	if not network.has(position):
+		return result
+
+	var start: NetworkNode = network[position]
+
+	search_neighbors(start)
+
+	for visited_node in visited_nodes.keys():
+		var network_node: NetworkNode = visited_node
+		result.append(network_node)
+
+	return result
+	
 func position_is_occupied(position: Vector2i) -> bool:
 	for type in nodes:
 		if nodes[type].has(position):

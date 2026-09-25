@@ -2,6 +2,8 @@
 class_name PowerGenerator
 extends NetworkSource
 
+@onready var tile_map: TileMapLayer = $"../../../NetworkRenderer/TileMap"
+
 @onready var information_power_control: Control = $InformationPowerControl
 @onready var timer_consumption: Timer = $TimerConsumption
 @onready var power_switch: CheckButton = $PowerSwitch
@@ -39,9 +41,21 @@ signal signal_update_status(
 
 
 func _ready() -> void:
+	print("===== POWER GENERATOR READY =====")
+	print("Nombre: ", name)
+	#print("Tipo de objeto: ", get_class())
+	#print("NetworkManagerGlobal: ", NetworkManagerGlobal)
+	
 	network_type = NetworkTypes.Type.POWER
+	var coordenada: Vector2i = tile_map.local_to_map(
+		tile_map.to_local(global_position)
+	)
+	connection_position = coordenada
+	print("Coordenada del generador: ", connection_position)
+	#print("Antes de registrar fuente")
 	NetworkManagerGlobal.register_source(self)
-
+	#print("Después de registrar fuente")
+	
 
 func powerOn() -> void:
 	if is_power_on:
@@ -74,7 +88,7 @@ func _on_detection_area_input_event(viewport: Node,event: InputEvent,shape_idx: 
 
 
 func _on_timer_consumption_timeout() -> void:
-	fuel_level -= 5.5
+	fuel_level -= 1.5
 	if is_power_on and fuel_level <= 0:
 		fuel_level = 0.0
 		power_switch.set_pressed(false)

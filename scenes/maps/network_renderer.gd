@@ -10,6 +10,11 @@ var rendered_nodes = {
 	NetworkTypes.Type.ETHERNET: {}
 }
 
+func _ready() -> void:
+	NetworkManagerGlobal.draw_node.connect(_on_network_manager_draw_node)
+	NetworkManagerGlobal.update_node_visual.connect(_on_network_manager_update_node_visual)
+	NetworkManagerGlobal.deleted_node_visual.connect(_on_network_manager_deleted_node_visual)
+
 
 func draw_node(node: NetworkNode):
 	
@@ -30,15 +35,6 @@ func draw_node(node: NetworkNode):
 	rendered_nodes[node.network_type][node.position] = line_instance
 	line_instance.update_visual(node)
 
-func _on_network_manager_draw_node(node: NetworkNode) -> void:
-	draw_node(node)
-
-
-func _on_network_manager_update_node_visual(node: NetworkNode) -> void:
-	if rendered_nodes[node.network_type].has(node.position):
-		var line_instance = rendered_nodes[node.network_type][node.position]
-		line_instance.update_visual(node)
-
 func delete_node(node: NetworkNode) -> void:
 	var type = node.network_type
 	if not rendered_nodes[type].has(node.position):
@@ -47,6 +43,16 @@ func delete_node(node: NetworkNode) -> void:
 	var line_instance = rendered_nodes[type][node.position]
 	rendered_nodes[type].erase(node.position)
 	line_instance.queue_free()
+
+
+func _on_network_manager_draw_node(node: NetworkNode) -> void:
+	draw_node(node)
+
+
+func _on_network_manager_update_node_visual(node: NetworkNode) -> void:
+	if rendered_nodes[node.network_type].has(node.position):
+		var line_instance = rendered_nodes[node.network_type][node.position]
+		line_instance.update_visual(node)
 
 
 func _on_network_manager_deleted_node_visual(node: NetworkNode) -> void:

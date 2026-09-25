@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://brgo4vi1bn75n"]
+
+[ext_resource type="Script" uid="uid://b0i080ww0dofm" path="res://scenes/modem/modem.gd" id="1_86rah"]
+
+[node name="modem" type="Node2D" unique_id=697553364]
+script = ExtResource("1_86rah")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2067851409]
+
+[node name="Power" type="Button" parent="." unique_id=1120358868]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "IO"
+
+[node name="LoadingTime" type="Timer" parent="." unique_id=224818229]
+wait_time = 2.0
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=590216345]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectionArea" unique_id=1820060533]
+
+[connection signal="pressed" from="Power" to="." method="_on_power_pressed"]
