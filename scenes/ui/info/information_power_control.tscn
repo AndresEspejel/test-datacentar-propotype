@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dde2cht5b588g" path="res://scenes/ui/info/information_power_control.gd" id="1_c7dax"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_c7dax"]
+font_size = 6
+
 [sub_resource type="LabelSettings" id="LabelSettings_qjbhj"]
 font_size = 6
 
@@ -32,6 +35,17 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = -3
 columns = 2
 
+[node name="LblName" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=114850687]
+layout_mode = 2
+text = "HostName:"
+label_settings = SubResource("LabelSettings_c7dax")
+
+[node name="txtName" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1124888703]
+layout_mode = 2
+text = "PW-000"
+label_settings = SubResource("LabelSettings_c7dax")
+horizontal_alignment = 1
+
 [node name="LblPower" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1871099711]
 layout_mode = 2
 text = "Power:"
@@ -56,7 +70,7 @@ horizontal_alignment = 1
 
 [node name="LblEnergy" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1072289127]
 layout_mode = 2
-text = "Energy :"
+text = "Energy out :"
 label_settings = SubResource("LabelSettings_qjbhj")
 
 [node name="txtEnergy" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=263800948]

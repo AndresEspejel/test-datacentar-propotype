@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://d2g30w7tqwulx" path="res://scenes/maps/build_manager.gd" id="9_dnf87"]
 [ext_resource type="PackedScene" uid="uid://cib8tqb0gwqtk" path="res://scenes/ui/MainControl/main_control.tscn" id="9_s5d3o"]
 [ext_resource type="PackedScene" uid="uid://bk48ixpe22k6e" path="res://scenes/power_generators/power_generator_basic.tscn" id="11_tlanf"]
+[ext_resource type="PackedScene" uid="uid://ddkliitg2070k" path="res://scenes/modem/modem_basic.tscn" id="12_x3aai"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_74gp3"]
 texture = ExtResource("3_lvkeh")
@@ -75,6 +76,9 @@ connection_position = Vector2i(10, 0)
 
 [node name="PowerGeneratorBasic" parent="BuildManager/NetworkDevice" unique_id=355358756 instance=ExtResource("11_tlanf")]
 position = Vector2(145, 113)
+
+[node name="modemBasic" parent="BuildManager/NetworkDevice" unique_id=697553364 instance=ExtResource("12_x3aai")]
+position = Vector2(176, 85)
 
 [connection signal="node_deleted_selected" from="CanvasLayer/HUD" to="BuildManager" method="_on_hud_node_deleted_selected"]
 [connection signal="node_type_selected" from="CanvasLayer/HUD" to="BuildManager" method="_on_hud_node_type_selected"]

@@ -3,6 +3,7 @@ extends NetworkConsumer
 
 @onready var loading_time: Timer = $LoadingTime
 @onready var tile_map: TileMapLayer = $"../../../NetworkRenderer/TileMap"
+@onready var information_control: Control = $InformationControl
 
 var connected_devices: int = 0
 var consumption_devices: float = 0
@@ -52,3 +53,8 @@ func set_power_state(powered: bool) -> void:
 
 func _on_power_pressed() -> void:
 	power_sw()
+
+
+func _on_detection_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("clic_left"):
+		information_control.visible = !information_control.visible

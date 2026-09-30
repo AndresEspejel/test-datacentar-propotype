@@ -1,0 +1,16 @@
+[remap]
+
+importer="fwdab.px.import.texture2d"
+type="Texture2D"
+uid="uid://0ii1jdfpi3ov"
+path="res://.godot/imported/Node_ connection.px-6c1368776c5c0d1a97b66ba575600218.res"
+
+[deps]
+
+source_file="res://assets/Node_ connection.px"
+dest_files=["res://.godot/imported/Node_ connection.px-6c1368776c5c0d1a97b66ba575600218.res"]
+
+[params]
+
+frame_index=0
+composite_visible_layers=true

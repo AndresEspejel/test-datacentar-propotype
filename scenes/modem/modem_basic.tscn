@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ddkliitg2070k"]
+
+[ext_resource type="PackedScene" uid="uid://brgo4vi1bn75n" path="res://scenes/modem/modem.tscn" id="1_dqos6"]
+[ext_resource type="Texture2D" uid="uid://dfx377rbueh5d" path="res://assets/modem.px" id="2_rx4y4"]
+
+[node name="modemBasic" unique_id=697553364 instance=ExtResource("1_dqos6")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=2067851409]
+position = Vector2(4, -7)
+texture = ExtResource("2_rx4y4")
+
+[node name="Power" parent="." index="1" unique_id=1120358868]
+offset_top = 10.0
+offset_right = 26.0
+offset_bottom = 41.0
+scale = Vector2(0.3, 0.3)
+
+[node name="CollisionPolygon2D" parent="DetectionArea" parent_id_path=PackedInt32Array(590216345) index="0" unique_id=1820060533]
+polygon = PackedVector2Array(-10, -1, 0, -6, 10, 0, 10, 5, 1, 10, -10, 5)

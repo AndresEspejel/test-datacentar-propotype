@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://brgo4vi1bn75n"]
 
 [ext_resource type="Script" uid="uid://b0i080ww0dofm" path="res://scenes/modem/modem.gd" id="1_86rah"]
+[ext_resource type="PackedScene" uid="uid://buy03ipv60df6" path="res://scenes/ui/info/information_modem.tscn" id="2_b0ks1"]
 
 [node name="modem" type="Node2D" unique_id=697553364]
 script = ExtResource("1_86rah")
@@ -12,6 +13,13 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "IO"
 
+[node name="InformationControl" parent="." unique_id=46941271 instance=ExtResource("2_b0ks1")]
+visible = false
+offset_left = 29.0
+offset_top = -42.0
+offset_right = 29.0
+offset_bottom = -42.0
+
 [node name="LoadingTime" type="Timer" parent="." unique_id=224818229]
 wait_time = 2.0
 
@@ -20,3 +28,4 @@ wait_time = 2.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectionArea" unique_id=1820060533]
 
 [connection signal="pressed" from="Power" to="." method="_on_power_pressed"]
+[connection signal="input_event" from="DetectionArea" to="." method="_on_detection_area_input_event"]
